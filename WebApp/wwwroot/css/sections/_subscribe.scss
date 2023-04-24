@@ -1,0 +1,53 @@
+.subscribe{
+    background-color: $color-gray1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 370px;
+    .container{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        height: 210px;
+    }
+
+    .parent{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        @include md{
+            display: block;
+        }
+        width: 80%;
+        input{
+            height: 60px;
+            width: 100%;
+            padding-left: 3rem;
+            border-radius: 50px;
+            border: 1px solid rgba(174, 174, 174, .4);
+            @include md{
+                width: 100%;
+            }
+            
+        }
+    
+        button{
+            position: absolute;
+            background-color: $color-theme;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            height: 60px;
+            top:4rem;
+            width: 100%;
+            @include md{
+                top:auto;
+                left: calc(71%);
+                width: 300px;
+            }
+            
+        }
+    }
+}

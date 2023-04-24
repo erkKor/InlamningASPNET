@@ -1,0 +1,125 @@
+html,body {
+    font-size:16px;
+    line-height: 1.5;
+    font-family: $font-poppins;
+    font-weight: $font-weight-regular;
+    color: $color-dark;
+}
+
+.container{
+    max-width: 1170px;
+}
+a{
+    text-decoration: none;
+    color: $color-dark;
+}
+
+.button-theme{
+    position: relative;
+    background-color: $color-theme;
+    border: none;
+    height: 55px;
+    width: 185px;
+    letter-spacing: 3px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+._card{
+    position: relative;
+    text-align: start;
+    height: 100%;
+    overflow: hidden;
+    &:hover{
+        box-shadow: 0px 0px 20px 1px rgba(174,175,174,0.4);
+        .add-cart{
+            bottom: 5px;
+
+        }
+    }
+
+    img{
+        width: 100%;
+        height: auto;
+        margin-bottom: 5px;
+        @include md{
+            margin-bottom: 0;
+            // width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+       
+    }
+    ._card-content{
+        background-color: white;
+        height: 65px;
+        width: 100%;
+        @include md{
+            margin: 0.7rem 0;
+            border-bottom: 1px solid rgba(174, 174, 174, .15);
+        }
+        
+        .price{
+            display: flex;
+            margin-top: 0.2rem;
+            
+            .discount-price{
+                margin-right: 1rem;
+            }
+            .original-price{
+                text-decoration: line-through;
+                
+            }
+            p{
+                font-size: 16px;
+                color: $color-gray20;
+                font-weight: 500;
+            }
+        }
+
+        p{
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 20px;
+            @include md{
+                line-height: normal;
+            }
+        }
+    }
+
+    .add-cart{
+        position: absolute;
+        // bottom: 5px;
+        bottom: -50px;
+        transition: 0.3s ease-in-out;
+        right:10px;
+        border:none;
+        background-color: transparent;
+        font-weight: 700;
+        font-size: 25px;
+    }
+}
+
+._card-grid{
+    display: grid;
+    gap:1.25rem;
+    grid-template-columns: repeat(2, 170px);
+    grid-template-rows: repeat(2, 250px);
+
+    @include md{
+    gap:2rem;
+    grid-template-columns: repeat(4, 260px);
+    grid-template-rows: repeat(2, 400px);
+    }
+}
+
+.footer{
+    background-color: $color-dark;
+    color:$color-gray15;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

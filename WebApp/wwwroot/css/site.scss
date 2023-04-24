@@ -1,0 +1,21 @@
+@import './core/variables';
+@import './core/mixins';
+@import './core/root';
+
+// Sections
+//  Home Page
+@import './sections/header';
+@import './sections/showcase';
+@import './sections/best-collection';
+@import './sections/pink-banner';
+@import './sections/top-sellers';
+@import './sections/subscribe';
+@import './sections/Forms/_contactform.scss';
+@import './sections/Forms/_forms.scss';
+@import './sections/Forms/_loginform.scss';
+@import './sections/Forms/_registerform.scss';
+
+
+//  Product Details Page
+@import './sections/ProductDetails/product-details';
+@import './sections/ProductDetails/related-products';

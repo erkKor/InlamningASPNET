@@ -1,0 +1,101 @@
+.top-sellers{
+    margin: 2rem 0;
+    .container{
+        max-width: 1770px;
+    }
+    h3{
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+        margin: 4rem 0;
+    }
+    ._card-grid{
+        display: grid;
+        gap:1.25rem;
+        grid-template-columns: repeat(2, 170px);
+        grid-template-rows: repeat(3, 250px);
+        @include md{
+            grid-template-columns: repeat(6, 270px);
+            grid-template-rows: repeat(1, 372px);
+        }
+
+        ._card{
+            img{width: 100%;}
+
+            ._card-content{
+                // height: ;
+            }
+        }
+    }
+    .buttons{
+        display: flex;
+        justify-content: center;
+        gap:1rem;
+        margin: 2.5rem 0;
+        button{
+            background-color: transparent;
+            border:1px solid $color-dark;
+            border-radius: 4px;
+            height: 40px;
+            width: 40px;
+        }
+    }
+    
+    .three-cards{
+        margin-bottom: 5rem;
+        display: grid;
+        gap:1.25rem;
+        justify-content: center;
+        grid-template-columns: repeat(1, 100%);
+        grid-template-rows: repeat(2, 450px);
+        @include md{
+            gap: 2rem;
+            grid-template-columns: repeat(3, 410px);
+            grid-template-rows: repeat(1, 500px);
+        }
+        
+        ._card{
+            border-bottom: 1px solid rgba(174, 174, 174, .15);
+            img{
+                margin-bottom: 0;
+                width: 100%;
+                height: auto;
+            }
+    
+            ._card-content{
+                
+                height: 90px;
+                font-size: 20px;
+                margin: 1rem 0;
+                border: none;
+                @include md{
+                    height: 120px;
+                }
+                .product-name{
+                    // border-bottom: 1px solid rgba(174, 174, 174, .15);
+                    padding-bottom: 10px;
+                }
+                .description{
+                    font-weight: 400;
+                    font-size: 16px;
+                    margin-bottom: 0.75rem;
+                }
+                .small-text{
+                    display: flex;
+                    .first{
+                        margin-right: 1rem;
+                    }
+                    p{
+                        font-size: 12px;
+                        font-weight: 400;
+                        color:$color-gray;
+                    }
+                }
+            }
+            .add-cart{
+                color: $color-gray;
+            }
+        }
+    }
+
+}

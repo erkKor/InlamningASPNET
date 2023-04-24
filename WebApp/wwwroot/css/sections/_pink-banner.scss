@@ -1,0 +1,72 @@
+.pink-banner{
+    background-color: $color-lightpink;;
+
+    .container{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        display: grid;
+        gap:1.25rem;
+        justify-content: center;
+        grid-template-columns: repeat(1, 100%);
+        grid-template-rows: repeat(2, 400px);
+        @include md{
+            gap: 2rem;
+            grid-template-columns: repeat(3, 410px);
+            grid-template-rows: repeat(1, 450px);
+        }
+    }
+
+    ._card{
+        img{
+            margin-bottom: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        ._card-content{
+            padding: 15px;
+            height: 90px;
+            margin: 0;
+            @include md{
+                height: 120px;
+            }
+            .product-name{
+                border-bottom: 1px solid rgba(174, 174, 174, .15);
+                padding-bottom: 10px;
+            }
+            .price{
+                margin-top: 0.7rem;
+                
+            }
+        }
+        .add-cart{
+            color: $color-gray;
+        }
+    }
+    .clear-card{
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h4{
+            color: $color-theme;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        h2{
+            font-family: $font-playfair-display;
+            font-size: 48px;
+            font-weight: 700;
+        }
+        h3{
+            font-size: 24px;
+            font-weight: 700;
+        }
+        p{
+            color:$color-gray20;
+            width: 300px;
+            margin-bottom: 3rem;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+﻿<header>
+    <div class="container">
+        <div class="logo-bar">
+            <img src="images/Logo.svg">
+            bmerketo
+            <button><i class="fa-regular fa-bars"></i></button>
+        </div>
+
+        <div id="menu">
+            <nav class="menu-links">
+                <a class="link" asp-controller="Home" asp-action="Index">HOME</a>
+                <a class="link" asp-controller="Products" asp-action="Index">PRODUCTS</a>
+                <a class="link" asp-controller="Contacts" asp-action="Index">CONTACT</a>
+            </nav>
+            <nav class="menu-icons">
+                <a href=""><i class="fa-regular fa-search"></i></a>
+
+
+                @if (signInManager.IsSignedIn(User))
+                {
+                    <a href="" class="me-4"><i class="fa-regular fa-shopping-cart"></i></a>
+                    <a asp-controller="Account" asp-action="Index">@User.Identity?.Name </a>
+                    <a asp-controller="Logout" asp-action="Index">Logout</a>
+                }
+                else
+                {
+                    <a asp-controller="Login" asp-action="Index">Login</a>
+                    <a href=""><i class="fa-regular fa-shopping-cart"></i></a>
+                }
+                
+
+
+
+
+                
+            </nav>
+        </div>
+    </div>
+</header>

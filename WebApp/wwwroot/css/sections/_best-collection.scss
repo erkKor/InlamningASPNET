@@ -1,0 +1,51 @@
+.best-collection{
+    .container{
+        text-align: center;
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h3{
+        font-size: 48px;
+        font-weight: 600;
+    }
+    .category-choices{
+        margin-bottom: 0.5rem;
+        @include md{
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+        a{
+            text-decoration: none;
+            color: $color-dark;
+            &:after{
+                content: " \00a0/\00a0";
+                font-size: 10px;
+                font-weight: 200;
+            }
+        }
+    }
+
+
+    .btn-load{
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+        background-color: transparent;
+        width: 185px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include md{
+            margin-top: 3rem;
+        }
+
+
+        i{
+            font-size: 12px;
+            margin-left: 6px;
+            
+        }
+    }
+}
