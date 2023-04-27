@@ -12,8 +12,8 @@ using WebApp.Models.Contexts;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230420095333_Identity")]
-    partial class Identity
+    [Migration("20230426103240_Adding products")]
+    partial class Addingproducts
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -183,6 +183,52 @@ namespace WebApp.Migrations
                     b.ToTable("Adresses");
                 });
 
+            modelBuilder.Entity("WebApp.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("WebApp.Models.Entities.UserAdressEntity", b =>
                 {
                     b.Property<string>("UserId")
@@ -328,6 +374,17 @@ namespace WebApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
+                {
+                    b.HasOne("WebApp.Models.Entities.ProductCategoryEntity", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("WebApp.Models.Entities.UserAdressEntity", b =>
                 {
                     b.HasOne("WebApp.Models.Entities.AdressEntity", "Adress")
@@ -350,6 +407,11 @@ namespace WebApp.Migrations
             modelBuilder.Entity("WebApp.Models.Entities.AdressEntity", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("WebApp.Models.Identity.AppUser", b =>

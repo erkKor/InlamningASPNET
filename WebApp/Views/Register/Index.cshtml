@@ -3,84 +3,100 @@
     ViewData["Title"] = "Login";
 }
 
+<partial name="/Views/Partials/_Header.cshtml" />
+
 <section class="register-form">
     <div class="container">
+        <div class="title">Register your new Account</div>
         <form method="post" enctype="multipart/form-data" novalidate>
 
             <div asp-validation-summary="ModelOnly"></div>
             <div class="firstname form-group">
                 <label asp-for="FirstName"></label>
-                <input asp-for="FirstName" class="invalid">
+                <input asp-for="FirstName" >
                 <small><span asp-validation-for="FirstName"></span></small>
             </div>
 
             <div class="lastname form-group">
                 <label asp-for="LastName"></label>
-                <input asp-for="LastName" class="invalid">
+                <input asp-for="LastName" >
                 <small><span asp-validation-for="LastName"></span></small>
             </div>
 
             <div class="streetname form-group">
                 <label asp-for="StreetName"></label>
-                <input asp-for="StreetName" class="invalid">
+                <input asp-for="StreetName" >
                 <small><span asp-validation-for="StreetName"></span></small>
             </div>
 
             <div class="postalcode form-group">
                 <label asp-for="PostalCode"></label>
-                <input asp-for="PostalCode" class="invalid">
+                <input asp-for="PostalCode" >
                 <small><span asp-validation-for="PostalCode"></span></small>
             </div>
 
             <div class="city form-group">
                 <label asp-for="City"></label>
-                <input asp-for="City" class="invalid">
+                <input asp-for="City" >
                 <small><span asp-validation-for="City"></span></small>
             </div>
 
             <div class="phone form-group">
                 <label asp-for="PhoneNumber"></label>
-                <input asp-for="PhoneNumber" class="invalid">
+                <input asp-for="PhoneNumber" >
                 <small><span asp-validation-for="PhoneNumber"></span></small>
             </div>
 
             <div class="company form-group">
                 <label asp-for="Company"></label>
-                <input asp-for="Company" class="invalid">
+                <input asp-for="Company" >
                 <small><span asp-validation-for="Company"></span></small>
             </div>
 
             <div class="email form-group">
                 <label asp-for="Email"></label>
-                <input asp-for="Email" class="invalid">
+                <input asp-for="Email" >
                 <small><span asp-validation-for="Email"></span></small>
             </div>
 
             <div class="password form-group">
                 <label asp-for="Password"></label>
-                <input asp-for="Password" class="invalid">
+                <input asp-for="Password" >
                 <small><span asp-validation-for="Password"></span></small>
             </div>
 
             <div class="conf-password form-group">
                 <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="invalid">
+                <input asp-for="ConfirmPassword" >
                 <small><span asp-validation-for="ConfirmPassword"></span></small>
             </div>
             <div class="image form-group">
                 <label asp-for="ImageFile"></label>
-                <input asp-for="ImageFile" class="invalid">
+                <input asp-for="ImageFile" >
                 <small><span asp-validation-for="ImageFile"></span></small>
             </div>
 
 
-            <div class="terms form-group">
+            @*<div class="terms form-group">
                 <label asp-for="TermsAndAgreement"></label>
-                <input asp-for="TermsAndAgreement" class="invalid">
+                <input asp-for="TermsAndAgreement" >
                 <small><span asp-validation-for="TermsAndAgreement"></span></small> 
+            </div>*@
+
+            <div class="terms form-checkbox-group">
+                <label class="custom-checkbox">
+                    <label asp-for="TermsAndAgreement"></label>
+                    <input asp-for="TermsAndAgreement" class="custom-checkbox" />
+                    
+                    <span class="checkmark"></span>
+                </label>
+                <small><span asp-validation-for="TermsAndAgreement"></span></small>
             </div>
 
-            <button class="btn-theme">Submit</button>
+
+            <button class="button-theme">Submit</button>
         </form>
     </div>
 </section>
+
+<partial name="/Views/Partials/_Footer.cshtml" />

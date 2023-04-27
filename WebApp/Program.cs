@@ -10,19 +10,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<IdentityContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
+builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
+builder.Services.AddAuthorization();
 builder.Services.AddScoped<AdressRepository>();
 builder.Services.AddScoped<UserAdressRepository>();
+builder.Services.AddScoped<ProductRepository>();
+builder.Services.AddScoped<ProductCategoryRepository>();
 builder.Services.AddScoped<AdressService>();
-builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductCategoryService>();
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
 	x.SignIn.RequireConfirmedAccount = false;
 	x.Password.RequiredLength = 8;
 	x.User.RequireUniqueEmail = true;
-}).AddEntityFrameworkStores<IdentityContext>()
-.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>();
+}).AddEntityFrameworkStores<DataContext>()
+.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
+.AddRoleManager<RoleManager<IdentityRole>>();
+builder.Services.AddScoped<AuthenticationService>();
 
 
 
@@ -34,11 +40,18 @@ builder.Services.ConfigureApplicationCookie(x =>
 });
 
 
+//builder.Services.AddAuthorization(options =>
+//{
+//	options.AddPolicy("AdminOnly", policy =>
+//		policy.RequireRole("Admin"));
+//});
+
 var app = builder.Build();
 app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",

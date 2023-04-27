@@ -1,14 +1,44 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebApp.Models.Identity;
+using WebApp.Models.ViewModels;
 
 namespace WebApp.Controllers
 {
-	[Authorize(Roles = "Admin")]
-	public class AdminController : Controller
+    //[Authorize(Roles = "Admin")]
+    [Authorize]
+    public class AdminController : Controller
 	{
-		public IActionResult Index()
+        private readonly UserManager<AppUser> _userManager;
+
+        public AdminController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        public async Task<IActionResult> Index()
 		{
-			return View();
-		}
+            //if (!User.IsInRole("Admin"))
+            //{
+            //    return RedirectToAction("AccessDenied");
+            //}
+            if (!await _userManager.IsInRoleAsync(await _userManager.GetUserAsync(User), "Admin"))
+            {
+                return RedirectToAction("Index", "Denied");
+            }
+
+            return View();
+        }
+
+        public async Task<IActionResult> AddProduct(AddProductViewModel viewModel)
+        {
+            if (!await _userManager.IsInRoleAsync(await _userManager.GetUserAsync(User), "Admin"))
+            {
+                return RedirectToAction("Index", "Denied");
+            }
+
+            return View(viewModel);
+        }
 	}
 }

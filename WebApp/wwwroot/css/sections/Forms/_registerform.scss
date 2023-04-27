@@ -6,11 +6,11 @@
     }
 
     .container {
-        border: 0px solid $color-dark;
+        border: 1px solid rgba(174, 174, 174, .15);
         padding: 30px;
 
         @include md {
-            border: 1px solid $color-dark;
+            border: 1px solid rgba(174, 174, 174, .05);
         }
     }
 
@@ -21,13 +21,13 @@
     form {
         display: grid;
         column-gap: 30px;
-        row-gap: 30px;
+        row-gap: 15px;
         grid-template-columns: 1fr;
         grid-template-areas: "message" "email" "password" "rememberme" "button";
 
         @include lg {
             grid-template-columns: 1fr 1fr;
-            grid-template-areas: "firstname lastname" "street street" "postal city" "phone company" "email email" "password password" "conf-password conf-password" "image image" "terms" "button";
+            grid-template-areas: "firstname lastname" "street street" "postal city" "phone company" "email email" "password password" "conf-password conf-password" "image image" "terms terms" "button button";
         }
 
         .firstname {
@@ -61,12 +61,15 @@
         .email {
             grid-area: email;
         }
+
         .password {
             grid-area: password;
         }
+
         .conf-password {
             grid-area: conf-password;
         }
+
         .image {
             grid-area: image;
         }
@@ -91,7 +94,7 @@
             grid-area: button;
 
             @include lg {
-                display: flex;
+                /*display: flex;*/
                 justify-self: flex-start;
             }
         }

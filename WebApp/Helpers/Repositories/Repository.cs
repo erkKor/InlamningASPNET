@@ -6,9 +6,9 @@ namespace WebApp.Helpers.Repositories
 {
     public abstract class Repository<TEntity> where TEntity : class
     {
-        private readonly IdentityContext _context;
+        private readonly DataContext _context;
 
-        protected Repository(IdentityContext context)
+        protected Repository(DataContext context)
         {
             _context = context;
         }
@@ -30,10 +30,15 @@ namespace WebApp.Helpers.Repositories
             return null!;
         }
 
-        public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
-            return await _context.Set<TEntity>().Where(expression).ToListAsync();
+            return await _context.Set<TEntity>().ToListAsync();
         }
+
+        //public virtual async Task<IEnumerable<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> expression)
+        //{
+        //    return await _context.Set<TEntity>().Where(expression).ToListAsync();
+        //}
 
         public virtual async Task<TEntity> UpdateAsync(TEntity entity)
         {

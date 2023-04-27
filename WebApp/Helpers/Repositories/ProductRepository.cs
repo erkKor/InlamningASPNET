@@ -3,10 +3,11 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Helpers.Repositories
 {
-    public class AdressRepository : Repository<AdressEntity>
+    public class ProductRepository : Repository<ProductEntity>
     {
-        public AdressRepository(DataContext context) : base(context)
+        public ProductRepository(DataContext context) : base(context)
         {
         }
     }
+
 }

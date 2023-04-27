@@ -6,14 +6,18 @@ using WebApp.Models.Identity;
 
 namespace WebApp.Models.Contexts
 {
-	public class IdentityContext : IdentityDbContext<AppUser>
+	public class DataContext : IdentityDbContext<AppUser>
 	{
-		public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
+		public DataContext(DbContextOptions<DataContext> options) : base(options)
 		{
 		}
 
 		public DbSet<AdressEntity> Adresses { get; set; }
 		public DbSet<UserAdressEntity> UserAdresses { get; set; }
+		public DbSet<ProductEntity> Products { get; set; }
+		public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
+
+
 
 		//protected override void OnModelCreating(ModelBuilder builder)
 		//{

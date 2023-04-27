@@ -751,12 +751,99 @@ input:not([type=checkbox]):focus {
 }
 @media (min-width: 992px) {
   .login-form form button {
-    display: flex;
+    /*display: flex;*/
     justify-self: flex-start;
   }
 }
 .login-form form .register-link {
   color: #FA3150;
+}
+
+.register-form {
+  padding: 20px 0 60px 0;
+}
+@media (min-width: 992px) {
+  .register-form {
+    padding: 60px 0;
+  }
+}
+.register-form .container {
+  border: 1px solid rgba(174, 174, 174, 0.15);
+  padding: 30px;
+}
+@media (min-width: 768px) {
+  .register-form .container {
+    border: 1px solid rgba(174, 174, 174, 0.05);
+  }
+}
+.register-form .title {
+  margin-bottom: 40px;
+}
+.register-form form {
+  display: grid;
+  column-gap: 30px;
+  row-gap: 15px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "message" "email" "password" "rememberme" "button";
+}
+@media (min-width: 992px) {
+  .register-form form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "firstname lastname" "street street" "postal city" "phone company" "email email" "password password" "conf-password conf-password" "image image" "terms terms" "button button";
+  }
+}
+.register-form form .firstname {
+  grid-area: firstname;
+}
+.register-form form .lastname {
+  grid-area: lastname;
+}
+.register-form form .streetname {
+  grid-area: street;
+}
+.register-form form .postalcode {
+  grid-area: postal;
+}
+.register-form form .city {
+  grid-area: city;
+}
+.register-form form .phone {
+  grid-area: phone;
+}
+.register-form form .company {
+  grid-area: company;
+}
+.register-form form .email {
+  grid-area: email;
+}
+.register-form form .password {
+  grid-area: password;
+}
+.register-form form .conf-password {
+  grid-area: conf-password;
+}
+.register-form form .image {
+  grid-area: image;
+}
+.register-form form .terms {
+  grid-area: terms;
+  margin: 10px 0;
+}
+.register-form form .message {
+  grid-area: message;
+}
+.register-form form textarea {
+  height: 100px;
+  resize: none;
+}
+.register-form form button {
+  grid-area: button;
+}
+@media (min-width: 992px) {
+  .register-form form button {
+    /*display: flex;*/
+    justify-self: flex-start;
+  }
 }
 
 .product-details {

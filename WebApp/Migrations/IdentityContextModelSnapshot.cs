@@ -10,7 +10,7 @@ using WebApp.Models.Contexts;
 
 namespace WebApp.Migrations
 {
-    [DbContext(typeof(IdentityContext))]
+    [DbContext(typeof(DataContext))]
     partial class IdentityContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -47,14 +47,6 @@ namespace WebApp.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "4e44692b-6f88-4afc-89d1-dacd8bee6c3a",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -142,13 +134,6 @@ namespace WebApp.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "b3dede5e-568e-401b-b6ea-d693e3f0bad4",
-                            RoleId = "4e44692b-6f88-4afc-89d1-dacd8bee6c3a"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -193,6 +178,52 @@ namespace WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Adresses");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("WebApp.Models.Entities.UserAdressEntity", b =>
@@ -287,24 +318,6 @@ namespace WebApp.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "b3dede5e-568e-401b-b6ea-d693e3f0bad4",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c6169945-c297-41c0-b2ad-a3e833b984aa",
-                            Email = "admin@domain.com",
-                            EmailConfirmed = false,
-                            FirstName = " ",
-                            LastName = "Adminlastname",
-                            LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMl9Rdw52bllMkvVPt5woheV256dXdk/lWnMuw+hdgsX/qQO8pIdePJcImpNn5waLQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "3cfcd206-17ab-4158-872e-4057b5458331",
-                            TwoFactorEnabled = false,
-                            UserName = " "
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -358,6 +371,17 @@ namespace WebApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("WebApp.Models.Entities.ProductEntity", b =>
+                {
+                    b.HasOne("WebApp.Models.Entities.ProductCategoryEntity", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("WebApp.Models.Entities.UserAdressEntity", b =>
                 {
                     b.HasOne("WebApp.Models.Entities.AdressEntity", "Adress")
@@ -380,6 +404,11 @@ namespace WebApp.Migrations
             modelBuilder.Entity("WebApp.Models.Entities.AdressEntity", b =>
                 {
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("WebApp.Models.Entities.ProductCategoryEntity", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("WebApp.Models.Identity.AppUser", b =>

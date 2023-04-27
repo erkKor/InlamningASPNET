@@ -4,6 +4,20 @@
             <img src="images/Logo.svg">
             bmerketo
             <button><i class="fa-regular fa-bars"></i></button>
+            
+            @*@if (signInManager.IsSignedIn(User) && (await userManager.IsInRoleAsync(await userManager.GetUserAsync(User), "Admin")))
+            {
+                <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
+
+            }*@
+            @if (signInManager.IsSignedIn(User))
+            {
+                var roles = await userManager.GetRolesAsync(await userManager.GetUserAsync(User));
+                if (roles.Contains("Admin"))
+                {
+                    <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
+                }
+            }
         </div>
 
         <div id="menu">
@@ -27,12 +41,7 @@
                     <a asp-controller="Login" asp-action="Index">Login</a>
                     <a href=""><i class="fa-regular fa-shopping-cart"></i></a>
                 }
-                
-
-
-
-
-                
+                 
             </nav>
         </div>
     </div>

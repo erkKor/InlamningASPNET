@@ -64,7 +64,7 @@
             grid-area: button;
 
             @include lg {
-                display: flex;
+                /*display: flex;*/
                 justify-self: flex-start;
             }
         }
