@@ -1,21 +1,12 @@
 ﻿namespace WebApp.Models.Entities
 {
-    public class ProductEntity
+	public class ProductEntity
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string Description { get; set; } = null!;
         public decimal Price { get; set; }
 
-        public int CategoryId { get; set; }
-        public ProductCategoryEntity Category { get; set; } = null!;
-    }
-
-    public class ProductCategoryEntity
-    {
-        public int Id { get; set; }
-        public string CategoryName { get; set; } = null!;
-
-        public ICollection<ProductEntity> Products { get; set; } = new List<ProductEntity>();
+        public ICollection<ProductCategoryEntity> Category { get; set; } = null!;
     }
 }

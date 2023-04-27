@@ -11,5 +11,4 @@ public class UserAdressEntity
 
 	public int AdressId { get; set; } 
 	public AdressEntity Adress { get; set; } = null!;
-
 }

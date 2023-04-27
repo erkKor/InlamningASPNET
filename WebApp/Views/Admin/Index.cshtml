@@ -1,4 +1,19 @@
 ﻿@{ViewData["Title"] = "Backoffice"; }
+@model IEnumerable<ProductEntity>
 
-<div>Backofficce</div>
-<a asp-action="AddProduct" asp-controller="Admin" class="m-4">AddProduct</a>
+<partial name="/Views/Partials/_Header.cshtml" />
+<div class=container>
+	<div>Backofficce</div>
+	<a asp-action="AddProduct" asp-controller="Admin" class="mt-5">Add Products</a>
+
+
+	@foreach (var product in Model)
+	{
+		<div class="mt-5">
+			@product.Name
+		</div>
+	}
+
+</div>
+
+

@@ -18,18 +18,18 @@
 		<span asp-validation-for="Description"></span>
 	</div>
 	<div class="mb-3">
-		@*<select asp-for="Form.Category">
-		@foreach(var category in await productCategoryManager.GetCategoriesAsync())
+		<select asp-for="SelectedCategoryId" multiple>
+		@foreach(var category in await productCategoryService.GetCategoriesAsync())
 		{
 		<option value="@category.Value">@category.Name</option>
 		}
-		</select>*@
-		<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Name", "Name"))">
 		</select>
+		@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Name", "Name"))">
+		</select>*@
 
 		@*<select asp-for="Form.Category.Name" asp-items="@(new SelectList(await productCategoryManager.GetCategoriesAsync(), "Value", "Name"))">*@
-		@*<select asp-for="Form.Category" asp-items="@(new SelectList(await productCategoryManager.GetCategoriesAsync(), "Value", "Name"))">
-		@foreach (var category in await productCategoryManager.GetCategoriesAsync())
+		@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Value", "Name"))" multiple>
+			@foreach (var category in await productCategoryService.GetCategoriesAsync())
 		{
 		<option value="@category.Value">@category.Name</option>
 		}

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebApp.Models.Entities;
 
 namespace WebApp.Models.ViewModels
 {
@@ -15,8 +16,17 @@ namespace WebApp.Models.ViewModels
         [Display(Name = "Product Description*")]
         [Required(ErrorMessage = "You must enter a description")]
         public string Description { get; set; } = null!;
-       
+        public int[] SelectedCategoryId { get; set; } = null!;
 
-        public int SelectedCategoryId { get; set; }
-    }
+
+		public static implicit operator ProductEntity(AddProductViewModel model)
+		{
+			return new ProductEntity
+			{
+				Name = model.Name,
+				Description = model.Description,
+				Price = model.Price,
+			};
+		}
+	}
 }

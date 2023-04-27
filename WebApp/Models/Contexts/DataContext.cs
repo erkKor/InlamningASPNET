@@ -15,7 +15,18 @@ namespace WebApp.Models.Contexts
 		public DbSet<AdressEntity> Adresses { get; set; }
 		public DbSet<UserAdressEntity> UserAdresses { get; set; }
 		public DbSet<ProductEntity> Products { get; set; }
+		public DbSet<CategoryEntity> Categories { get; set; }
 		public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
+
+		//protected override void OnModelCreating(ModelBuilder builder)
+		//{
+		//	builder.Entity<CategoryEntity>().HasData
+		//	(
+		//		new CategoryEntity { Id = 1, CategoryName = "New" },
+		//		new CategoryEntity { Id = 2, CategoryName = "Popular" },
+		//		new CategoryEntity { Id = 3, CategoryName = "Featured" }
+		//	);
+		//}
 
 
 
@@ -24,7 +35,7 @@ namespace WebApp.Models.Contexts
 
 		//	var roleId = Guid.NewGuid().ToString();
 		//	var userId = Guid.NewGuid().ToString();	
-			
+
 
 		//	base.OnModelCreating(builder);
 
@@ -46,7 +57,7 @@ namespace WebApp.Models.Contexts
 		//		LastName = "Adminlastname",
 		//		Email = "admin@domain.com",
 		//		PasswordHash = passwordHasher.HashPassword(null!, "Admin123!"),
-				
+
 		//	});
 
 		//	builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
