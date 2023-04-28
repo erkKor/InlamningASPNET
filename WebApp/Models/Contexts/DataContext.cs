@@ -17,6 +17,7 @@ namespace WebApp.Models.Contexts
 		public DbSet<ProductEntity> Products { get; set; }
 		public DbSet<CategoryEntity> Categories { get; set; }
 		public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
+		public DbSet<ContactFormEntity> ContactFormMessages { get; set; }
 
 		//protected override void OnModelCreating(ModelBuilder builder)
 		//{
