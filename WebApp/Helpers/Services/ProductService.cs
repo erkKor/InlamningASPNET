@@ -29,9 +29,24 @@ namespace WebApp.Helpers.Services
 			}
 		}
 
-		public async Task<IEnumerable<ProductEntity>> GetAllProductsAsync()
+		public async Task<IEnumerable<CardGridItemVM>> GetAllProductsAsync()
 		{
-			return await _productRepo.GetAllAsync();
-		}
-	}
+            var products = await _productRepo.GetAllAsync();
+
+            return products.Select(p => new CardGridItemVM
+            {
+                Id = p.Id.ToString(),
+                Name = p.Name,
+                Description = p.Description,
+                Price = p.Price
+            });
+
+        }
+
+        public async Task<IEnumerable<string>> GetProductCategoriesAsync()
+        {
+            var categories = await _categoryService.GetCategoriesAsync();
+            return categories.Select(c => c.Name);
+        }
+    }
 }

@@ -29,7 +29,7 @@
     //    // Show a success message or refresh the page
     //},
     //error: function() {
-    //    // Show an error message or handle the error
+    //    // Show an error message or handle the errord
     //}
     //        });
     //    });
