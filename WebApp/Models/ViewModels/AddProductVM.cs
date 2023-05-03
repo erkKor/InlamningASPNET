@@ -3,7 +3,7 @@ using WebApp.Models.Entities;
 
 namespace WebApp.Models.ViewModels
 {
-    public class AddProductViewModel
+    public class AddProductVM
     {
         [Display(Name = "Product Name*")]
         [Required(ErrorMessage = "You must enter a product name")]
@@ -19,7 +19,7 @@ namespace WebApp.Models.ViewModels
         public int[] SelectedCategoryId { get; set; } = null!;
 
 
-		public static implicit operator ProductEntity(AddProductViewModel model)
+		public static implicit operator ProductEntity(AddProductVM model)
 		{
 			return new ProductEntity
 			{

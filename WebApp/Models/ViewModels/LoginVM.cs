@@ -2,7 +2,7 @@
 
 namespace WebApp.Models.ViewModels
 {
-	public class LoginViewModel
+	public class LoginVM
 	{
 		[Display(Name = "Email")]
 		[DataType(DataType.EmailAddress)]

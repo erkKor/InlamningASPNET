@@ -18,20 +18,22 @@ builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<ProductCategoriesRepository>();
 builder.Services.AddScoped<ContactFormRepository>();
+builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AdressService>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<ContactFormService>();
-
+builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
 	x.SignIn.RequireConfirmedAccount = false;
 	x.Password.RequiredLength = 8;
 	x.User.RequireUniqueEmail = true;
 }).AddEntityFrameworkStores<DataContext>()
-.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
+//.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
 .AddRoleManager<RoleManager<IdentityRole>>();
-builder.Services.AddScoped<AuthenticationService>();
+
 
 
 

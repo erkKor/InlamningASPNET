@@ -19,7 +19,7 @@ namespace WebApp.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Index(ContactFormViewModel viewModel)
+		public async Task<IActionResult> Index(ContactFormVM viewModel)
 		{
 			if(ModelState.IsValid)
 			{

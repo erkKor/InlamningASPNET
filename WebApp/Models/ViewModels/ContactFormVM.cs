@@ -4,7 +4,7 @@ using WebApp.Models.Identity;
 
 namespace WebApp.Models.ViewModels
 {
-	public class ContactFormViewModel
+	public class ContactFormVM
 	{
 		[Display(Name = "Name*")]
 		[Required(ErrorMessage = "You must enter a name")]
@@ -29,7 +29,7 @@ namespace WebApp.Models.ViewModels
 
 
 
-		public static implicit operator ContactFormEntity(ContactFormViewModel model)
+		public static implicit operator ContactFormEntity(ContactFormVM model)
 		{
 			return new ContactFormEntity
 			{

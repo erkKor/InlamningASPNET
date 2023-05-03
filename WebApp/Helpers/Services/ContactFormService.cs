@@ -13,7 +13,7 @@ namespace WebApp.Helpers.Services
 			_repository = repository;
 		}
 
-		public async Task AddContactMessageAsync(ContactFormViewModel viewModel)
+		public async Task AddContactMessageAsync(ContactFormVM viewModel)
 		{
 			ContactFormEntity contactFormEntity = viewModel;
 

@@ -4,7 +4,7 @@ using WebApp.Models.Identity;
 
 namespace WebApp.Models.ViewModels
 {
-	public class UserRegisterViewModel
+	public class UserRegisterVM
 	{
 
 		[Display(Name = "First Name*")]
@@ -70,7 +70,7 @@ namespace WebApp.Models.ViewModels
 
 
 
-		public static implicit operator AppUser(UserRegisterViewModel model)
+		public static implicit operator AppUser(UserRegisterVM model)
 		{
 			return new AppUser
             {
@@ -84,7 +84,7 @@ namespace WebApp.Models.ViewModels
         }
 
 
-        public static implicit operator AdressEntity(UserRegisterViewModel model)
+        public static implicit operator AdressEntity(UserRegisterVM model)
 		{
 			return new AdressEntity
 			{

@@ -1,19 +1,105 @@
-﻿@{ViewData["Title"] = "Backoffice"; }
-@model IEnumerable<ProductEntity>
+﻿
+@{ViewData["Title"] = "Backoffice"; }
+@*@model IEnumerable<ProductEntity>*@
+@model IEnumerable<UserViewModel>
+
 
 <partial name="/Views/Partials/_Header.cshtml" />
-<div class=container>
-	<div>Backofficce</div>
-	<a asp-action="AddProduct" asp-controller="Admin" class="mt-5">Add Products</a>
+<section class="backoffice">
+	<div class=container>
+		<div>Backofficce</div>
+		<a asp-action="AddProduct" asp-controller="Admin" class="mt-5">Add Products</a>
 
 
-	@foreach (var product in Model)
-	{
+		@*	@foreach (var product in Model)
+		{
 		<div class="mt-5">
-			@product.Name
+		@product.Name
 		</div>
-	}
+		}*@
 
-</div>
+		<table id="usersTable" class="mt-5">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Role</th>
+				@*<th>Edit</th>*@
+			</tr>
+			@foreach (var user in Model)
+			{
+				@*<div class="mt-5">
+			@users.FirstName
+			</div>*@
+
+				<tr>
+					<td>@user.FirstName @user.LastName</td>
+					<td>@user.Email</td>
+					<td>
+						@*1st Part*@
+						@*foreach (var roleName in user.RoleNames)
+					{
+					<span>@roleName</span>
+					<button>Edit</button>
+					}*@
+
+						@*2nd Part*@
+						@*<select name="roles" id="roles" data-user-id="@user.Id">
+					@foreach (var roleName in user.RoleNames)
+					{
+					<option value="@roleName" selected="@((roleName == user.RoleName) ? "selected" : null)">@roleName</option>
+					}
+					@foreach (var role in ViewBag.Roles)
+					{
+					if (!user.RoleNames.Contains(role))
+					{
+					<option value="@role">@role</option>
+					}
+					}
+					</select>*@
+
+
+						<div class="roles-wrapper" data-user-id="@user.Id">
+							@*1st Part*@
+							<div class="role-names">
+								@foreach (var roleName in user.RoleNames)
+								{
+									<span>@roleName</span>
+									<button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+								}
+							</div>
+
+							@*2nd Part*@
+							<div class="role-select" style="display: none">
+								<form method="post" action="@Url.Action("UpdateUserRole", "Admin")">
+									<input type="hidden" name="userId" value="@user.Id" />
+									<select name="roleName">
+										@foreach (var roleName in ViewBag.Roles)
+										{
+											<option value="@roleName" selected="@((roleName == user.RoleName) ? "selected" : null)">@roleName</option>
+										}
+									</select>
+									<button type="submit">Save</button>
+									<button class="cancel-btn"><i class="fa-solid fa-xmark"></i></button>
+								</form>
+
+							</div>
+						</div>
+					</td>
+				</tr>
+			}
+
+		</table>
+
+
+
+		@*<select >
+		@foreach (var role in await userManager.GetRolesAsync())
+		{
+		<option value="@role.Value">@role.Name</option>
+		}
+		</select>*@
+
+	</div>
+</section>
 
 

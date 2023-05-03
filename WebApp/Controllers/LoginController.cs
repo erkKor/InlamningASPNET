@@ -16,7 +16,7 @@ namespace WebApp.Controllers
         public IActionResult Index(string ReturnUrl = null!)
 		{
 
-			var viewModel = new LoginViewModel();
+			var viewModel = new LoginVM();
 			if (ReturnUrl != null)
 				viewModel.ReturnUrl = ReturnUrl;
 
@@ -26,7 +26,7 @@ namespace WebApp.Controllers
 
 
 		[HttpPost]
-		public async Task<IActionResult> Index(LoginViewModel model)
+		public async Task<IActionResult> Index(LoginVM model)
 		{
 			if(ModelState.IsValid)
 			{

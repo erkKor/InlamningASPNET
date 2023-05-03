@@ -17,7 +17,7 @@ namespace WebApp.Helpers.Services
 
 
 
-		public async Task AddProductAsync(AddProductViewModel viewModel)
+		public async Task AddProductAsync(AddProductVM viewModel)
         {
             ProductEntity product = viewModel;
 

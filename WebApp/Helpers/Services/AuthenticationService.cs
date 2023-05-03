@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using WebApp.Models.Identity;
 using WebApp.Models.ViewModels;
 
@@ -25,7 +26,7 @@ namespace WebApp.Helpers.Services
         {
             return await _userManager.Users.AnyAsync(expression);
         }
-        public async Task<bool> RegisterUserAsync(UserRegisterViewModel model)
+        public async Task<bool> RegisterUserAsync(UserRegisterVM model)
         {
             AppUser appUser = model;
             var roleName = "User";
@@ -55,12 +56,15 @@ namespace WebApp.Helpers.Services
             return false;
         }
 
-        public async Task<bool> LoginAsync(LoginViewModel model)
+        public async Task<bool> LoginAsync(LoginVM model)
         {
             var appUpser = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == model.Email);
             if (appUpser != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(appUpser, model.Password, model.RememberMe, false);
+
+
+                //var result = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Admin"));
                 return result.Succeeded;
             }
 

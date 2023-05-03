@@ -10,14 +10,20 @@
                 <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
 
             }*@
-            @if (signInManager.IsSignedIn(User))
+            @*@if (signInManager.IsSignedIn(User))
             {
                 var roles = await userManager.GetRolesAsync(await userManager.GetUserAsync(User));
                 if (roles.Contains("Admin"))
                 {
                     <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
                 }
+            }*@
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
+
             }
+
         </div>
 
         <div id="menu">
