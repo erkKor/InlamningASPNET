@@ -16,17 +16,19 @@ namespace WebApp.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ProductService _productService;
         private readonly UserService _userService;
+		private readonly AuthenticationService _authService;
 
-		public AdminController(UserManager<AppUser> userManager, ProductService productService, UserService userService, RoleManager<IdentityRole> roleManager)
-		{
-			_userManager = userManager;
-			_productService = productService;
-			_userService = userService;
-			_roleManager = roleManager;
-		}
+        public AdminController(UserManager<AppUser> userManager, ProductService productService, UserService userService, RoleManager<IdentityRole> roleManager, AuthenticationService authService)
+        {
+            _userManager = userManager;
+            _productService = productService;
+            _userService = userService;
+            _roleManager = roleManager;
+            _authService = authService;
+        }
 
-		//[Authorize(Roles = "Admin")]
-		public async Task<IActionResult> Index()
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Index()
 		{
 			var users = await _userManager.Users.ToListAsync();
 			var userViewModels = new List<UserViewModel>();
@@ -81,7 +83,8 @@ namespace WebApp.Controllers
 			return RedirectToAction("Index");
 		}
 
-		public async Task<IActionResult> AddProduct(AddProductVM viewModel)
+
+        public async Task<IActionResult> AddProduct(AddProductVM viewModel)
         {
             //if (!await _userManager.IsInRoleAsync(await _userManager.GetUserAsync(User), "Admin"))
             //{
@@ -96,6 +99,21 @@ namespace WebApp.Controllers
 
             return View(viewModel);
         }
+
+
+        public async Task<IActionResult> AddUser(UserRegisterVM viewModel)
+		{
+			if (ModelState.IsValid)
+			{
+                if (await _authService.UserExistsAsync(x => x.Email == viewModel.Email))
+                    ModelState.AddModelError("", "User with the same email adress already exists.");
+
+                if (await _authService.RegisterUserAsync(viewModel))
+                    return RedirectToAction("Index");
+            }
+
+			return View(viewModel);
+		}
 	}
 }
 

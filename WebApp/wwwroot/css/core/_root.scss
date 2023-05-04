@@ -14,9 +14,12 @@ a{
     color: $color-dark;
 }
 
-.button-theme{
+.button-theme {
     position: relative;
-    background-color: $color-theme;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-dark;
     border: none;
     height: 55px;
     width: 185px;

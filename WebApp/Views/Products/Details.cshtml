@@ -1,6 +1,5 @@
-﻿
+﻿@model CardGridItemVM
 <partial name="/Views/Partials/_Header.cshtml" />
-<div>details</div>
 
 <section class="product-showcase">
     <div class="container">
@@ -23,7 +22,7 @@
                 <img src="images/120x113.svg">
             </div>
             <div class="product-info">
-                <h4>Young Star Smart Shoe in Fashion</h4>
+                <h4>@Model.Name</h4>
                 <p class="_text-info">Lirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                 <div class="stars">
                     <i class="fa-solid fa-star"></i>
@@ -147,3 +146,5 @@
         </div>
     </div>
 </section>
+
+<partial name="/Views/Partials/_Footer.cshtml" />

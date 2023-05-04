@@ -6,19 +6,20 @@
 
 <partial name="/Views/Partials/_Header.cshtml" />
 <section class="backoffice">
-	<div class=container>
-		<div>Backofficce</div>
-		<a asp-action="AddProduct" asp-controller="Admin" class="mt-5">Add Products</a>
-
-
-		@*	@foreach (var product in Model)
-		{
-		<div class="mt-5">
-		@product.Name
+	<div class="banner">
+		<div class="container">
+			<h2>Backoffice - Main menu</h2>
 		</div>
-		}*@
+	</div>
+	<div class=container>
+		
+		<div class="choices">
+			<a asp-action="AddProduct" asp-controller="Admin" class="button-theme">Add Products</a>
+			<a asp-action="AddUser" asp-controller="Admin" class="button-theme">Add User</a>
+		</div>
 
-		<table id="usersTable" class="mt-5">
+		<h4>All Users</h4>
+		<table id="usersTable" >
 			<tr>
 				<th>Name</th>
 				<th>Email</th>
@@ -27,10 +28,6 @@
 			</tr>
 			@foreach (var user in Model)
 			{
-				@*<div class="mt-5">
-			@users.FirstName
-			</div>*@
-
 				<tr>
 					<td>@user.FirstName @user.LastName</td>
 					<td>@user.Email</td>
@@ -89,16 +86,6 @@
 			}
 
 		</table>
-
-
-
-		@*<select >
-		@foreach (var role in await userManager.GetRolesAsync())
-		{
-		<option value="@role.Value">@role.Name</option>
-		}
-		</select>*@
-
 	</div>
 </section>
 

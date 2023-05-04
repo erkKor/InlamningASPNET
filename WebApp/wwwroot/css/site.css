@@ -21,7 +21,10 @@ a {
 
 .button-theme {
   position: relative;
-  background-color: #FA3150;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292929;
   border: none;
   height: 55px;
   width: 185px;
@@ -1027,8 +1030,12 @@ input:not([type=checkbox]):focus {
   }
 }
 
+.backoffice .banner {
+  background-color: #292929;
+  color: white;
+  padding: 1rem 0;
+}
 .backoffice table {
-  font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 101%;
 }
@@ -1046,7 +1053,7 @@ input:not([type=checkbox]):focus {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #292929;
   color: white;
 }
 .backoffice form button {
@@ -1060,4 +1067,10 @@ input:not([type=checkbox]):focus {
   border: none;
   color: #292929;
   font-weight: bold;
+}
+.backoffice .choices {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
 }

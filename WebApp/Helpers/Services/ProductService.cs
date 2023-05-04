@@ -29,6 +29,13 @@ namespace WebApp.Helpers.Services
 			}
 		}
 
+        public async Task<CardGridItemVM> GetProductAsync(int id)
+        {
+            var product = await _productRepo.GetAsync(x => x.Id == id);
+
+            return product;
+        }
+
 		public async Task<IEnumerable<CardGridItemVM>> GetAllProductsAsync()
 		{
             var products = await _productRepo.GetAllAsync();
