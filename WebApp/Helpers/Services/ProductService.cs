@@ -38,14 +38,26 @@ namespace WebApp.Helpers.Services
 
 		public async Task<IEnumerable<CardGridItemVM>> GetAllProductsAsync()
 		{
-            var products = await _productRepo.GetAllAsync();
+            //var products = await _productRepo.GetAllAsync();
+            var products = await _productRepo.GetAllWithCategoriesAsync();
+
+
+            //return products.Select(p => new CardGridItemVM
+            //{
+            //    Id = p.Id.ToString(),
+            //    Name = p.Name,
+            //    Description = p.Description,
+            //    Price = p.Price
+            //});
+
 
             return products.Select(p => new CardGridItemVM
             {
                 Id = p.Id.ToString(),
                 Name = p.Name,
                 Description = p.Description,
-                Price = p.Price
+                Price = p.Price,
+                Category = p.Category.Select(pc => pc.Category.CategoryName).ToArray()
             });
 
         }

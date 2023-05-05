@@ -10,6 +10,8 @@ namespace WebApp.Models.ViewModels
 		public decimal Price { get; set; }
 		public string ImageUrl { get; set; } = null!;
 
+        public string[] Category { get; set; } = null!; 
+
         public static implicit operator CardGridItemVM(ProductEntity product)
         {
             return new CardGridItemVM

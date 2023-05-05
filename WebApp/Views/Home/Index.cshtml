@@ -1,7 +1,6 @@
 ﻿@model HomeControllerVM
 
 <partial name="/Views/Partials/_Header.cshtml" />
-
 <section class="showcase">
     <div class="container">
         <div class="content">
@@ -13,14 +12,17 @@
     </div>
 </section>
 
-<partial name="/Views/Partials/_CardGrid.cshtml" model="@Model.BestCollection" />
- 
-
+<section class="best-collection">
+    <div class="container">
+        <h3>Best Collection</h3>
+        <partial name="/Views/Partials/_CardGrid.cshtml" model="@Model.BestCollection" />
+        <button class="btn-load">LOAD MORE <i class="fa-solid fa-rotate-right"></i></button>
+    </div>
+</section>
 
 <section class="pink-banner">
     <div class="container">
         <div class="_card">
-            @*<img src="images/369x310.svg">*@
             <img src="~/images/placeholders/369x310.svg">
             <div class="_card-content">
                 <p class="product-name">Table Lamp - scelerisque tempore</p>
@@ -60,94 +62,15 @@
 <section class="top-sellers">
     <div class="container">
         <h3>Top selling products this week</h3>
-        <div class="_card-grid">
-            <div class="_card">
-                <img src="images/270x295.svg">
-                <div class="_card-content">
-                    <p>Apple watch series</p>
-                    <div class="price">
-                        <p class="discount-price">$30.00</p>
-                        <p class="original-price">$50.00</p>
-                    </div>
-                </div>
-                <button class="add-cart">
-                    <i class="fa-regular fa-cart-plus"></i>
-                </button>
-            </div>
-            <div class="_card">
-                <img src="images/270x295.svg">
-                <div class="_card-content">
-                    <p>Apple watch series</p>
-                    <div class="price">
-                        <p class="discount-price">$30.00</p>
-                        <p class="original-price">$50.00</p>
-                    </div>
-                </div>
-                <button class="add-cart">
-                    <i class="fa-regular fa-cart-plus"></i>
-                </button>
-            </div>
-            <div class="_card">
-                <img src="images/270x295.svg">
-                <div class="_card-content">
-                    <p>Apple watch series</p>
-                    <div class="price">
-                        <p class="discount-price">$30.00</p>
-                        <p class="original-price">$50.00</p>
-                    </div>
-                </div>
-                <button class="add-cart">
-                    <i class="fa-regular fa-cart-plus"></i>
-                </button>
-            </div>
-            <div class="_card">
-                <img src="images/270x295.svg">
-                <div class="_card-content">
-                    <p>Apple watch series</p>
-                    <div class="price">
-                        <p class="discount-price">$30.00</p>
-                        <p class="original-price">$50.00</p>
-                    </div>
-                </div>
-                <button class="add-cart">
-                    <i class="fa-regular fa-cart-plus"></i>
-                </button>
-            </div>
-            <div class="_card">
-                <img src="images/270x295.svg">
-                <div class="_card-content">
-                    <p>Apple watch series</p>
-                    <div class="price">
-                        <p class="discount-price">$30.00</p>
-                        <p class="original-price">$50.00</p>
-                    </div>
-                </div>
-                <button class="add-cart">
-                    <i class="fa-regular fa-cart-plus"></i>
-                </button>
-            </div>
-            <div class="_card">
-                <img src="images/270x295.svg">
-                <div class="_card-content">
-                    <p>Apple watch series</p>
-                    <div class="price">
-                        <p class="discount-price">$30.00</p>
-                        <p class="original-price">$50.00</p>
-                    </div>
-                </div>
-                <button class="add-cart">
-                    <i class="fa-regular fa-cart-plus"></i>
-                </button>
-            </div>
-
-        </div>
+        <partial name="/Views/Partials/_CardGrid.cshtml" model="@Model.TopSellers" />
         <div class="buttons">
             <button><i class="fa-solid fa-chevron-left"></i></button>
             <button><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+
         <div class="three-cards">
             <div class="_card">
-                <img src="images/369x310.svg">
+                <img src="~/images/placeholders/369x310.svg"/>
                 <div class="_card-content">
                     <p class="product-name">Table lamp 1562 LTG modal</p>
                     <p class="description">
@@ -164,7 +87,7 @@
                 </button>
             </div>
             <div class="_card">
-                <img src="images/369x310.svg">
+                <img src="~/images/placeholders/369x310.svg" />
                 <div class="_card-content">
                     <p class="product-name">Table lamp 1562 LTG modal</p>
                     <p class="description">
@@ -181,7 +104,7 @@
                 </button>
             </div>
             <div class="_card">
-                <img src="images/369x310.svg">
+                <img src="~/images/placeholders/369x310.svg" />
                 <div class="_card-content">
                     <p class="product-name">Table lamp 1562 LTG modal</p>
                     <p class="description">
@@ -200,14 +123,5 @@
         </div>
     </div>
 </section>
-
-<section class="subscribe">
-    <div class="container">
-        <div class="parent">
-            <input type="text" placeholder="Enter your mail here">
-            <button class="input-btn">SUBSCRIBE FOR NEWSLETTER</button>
-        </div>
-    </div>
-</section>
-
+<partial name="/Views/Partials/_Subscribe.cshtml" />
 <partial name="/Views/Partials/_Footer.cshtml" />

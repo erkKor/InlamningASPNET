@@ -1,29 +1,22 @@
 ﻿@model CardGridVM
 
-<section class="best-collection">
-    <div class="container">
-        <h3>Best Collection</h3>
-
-        @if (Model.Categories != null)
+@if (Model.Categories != null)
+{
+    <div class="category-choices">
+        @foreach (var category in Model.Categories)
         {
-            <div class="category-choices">
-                @foreach (var category in Model.Categories)
-                {
-                    <a href="">@category</a>
-                }
-            </div>
+            <a href="">@category</a>
         }
-
-        @if (Model.GridItems != null)
-        {
-            <div class="_card-grid">
-            @foreach (var item in Model.GridItems)
-            {
-                <partial name="/Views/Partials/_CardGridItem.cshtml" model="item" />
-            }
-            </div>
-        }
-       
-        <button class="btn-load">LOAD MORE <i class="fa-solid fa-rotate-right"></i></button>
     </div>
-</section>
+}
+
+@if (Model.GridItems != null)
+{
+    <div class="_card-grid">
+    @foreach (var item in Model.GridItems)
+    {
+        <partial name="/Views/Partials/_CardGridItem.cshtml" model="item" />
+    }
+    </div>
+}
+       
