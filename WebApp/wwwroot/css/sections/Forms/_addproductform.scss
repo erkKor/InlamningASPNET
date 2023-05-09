@@ -1,0 +1,52 @@
+.addproducts-form {
+    padding: 20px 0 60px 0;
+
+    @include lg {
+        padding: 60px 0;
+    }
+
+    .container {
+        border: 1px solid rgba(174, 174, 174, .15);
+        padding: 30px 10rem;
+
+        @include md {
+            /*border: 1px solid rgba(174, 174, 174, .05);*/
+            border: 1px solid black;
+        }
+    }
+
+    .title {
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        column-gap: 30px;
+        row-gap: 15px;
+        grid-template-columns: 1fr;
+        /*        @include lg {
+            grid-template-columns: 1fr;
+        }*/
+
+        textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        select {
+            border: 1px solid rgba(174, 174, 174, .35);
+            width: 300px;
+        }
+
+        button {
+            grid-area: button;
+
+            @include lg {
+                /*display: flex;*/
+                justify-self: flex-start;
+            }
+        }
+    }
+}

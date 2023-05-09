@@ -35,7 +35,7 @@
     
         button{
             position: absolute;
-            background-color: $color-theme;
+            background-color: $color-dark;
             color: white;
             border: none;
             border-radius: 50px;
@@ -43,8 +43,8 @@
             top:4rem;
             width: 100%;
             @include md{
-                top:auto;
-                left: calc(71%);
+                top:0;
+                left: calc(68%);
                 width: 300px;
             }
             

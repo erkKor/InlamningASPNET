@@ -23,14 +23,14 @@ namespace WebApp.Controllers
         {
             if(ModelState.IsValid)
             {
-                    if (await _auth.UserExistsAsync(x => x.Email == model.Email))
-                        ModelState.AddModelError("", "User with the same email adress already exists.");
+                if (await _auth.UserExistsAsync(x => x.Email == model.Email))
+                    ModelState.AddModelError("", "User with the same email adress already exists.");
 
-                    if (await _auth.RegisterUserAsync(model))
-                        return RedirectToAction("Index", "Login");
+                if (await _auth.RegisterUserAsync(model))
+                    return RedirectToAction("Index", "Login");
+                        
             }
-
-            
+ 
             return View(model); 
         }
     }

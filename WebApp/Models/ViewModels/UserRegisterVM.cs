@@ -72,15 +72,20 @@ namespace WebApp.Models.ViewModels
 
 		public static implicit operator AppUser(UserRegisterVM model)
 		{
-			return new AppUser
-            {
-                UserName = model.Email,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                PhoneNumber = model.PhoneNumber,
-                Email = model.Email,
-                CompanyName = model.Company,
+			var entity =  new AppUser
+			{
+				UserName = model.Email,
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				PhoneNumber = model.PhoneNumber,
+				Email = model.Email,
+				CompanyName = model.Company,
             };
+
+			if(model.ImageFile != null )
+				entity.UploadProfileImage = $"{model.Email.Replace(".", "")}_{model.ImageFile.FileName}";
+
+			return entity;
         }
 
 

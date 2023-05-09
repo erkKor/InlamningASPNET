@@ -1,40 +1,74 @@
 ﻿@model AddProductVM
 
-<div>Add product</div>
-<form method="post">
-	<div class="mb-3">
-		<label asp-for="Name">Product Name</label>
-		<input asp-for="Name" class="form-control" />
-		<span asp-validation-for="Name"></span>
-	</div>
-	<div class="mb-3">
-		<label asp-for="Price">Product Price</label>
-		<input asp-for="Price" class="form-control" />
-		<span asp-validation-for="Price"></span>
-	</div>
-	<div class="mb-3">
-		<label asp-for="Description">Product Name</label>
-		<input asp-for="Description" class="form-control" />
-		<span asp-validation-for="Description"></span>
-	</div>
-	<div class="mb-3">
-		<select asp-for="SelectedCategoryId" multiple>
-		@foreach(var category in await productCategoryService.GetCategoriesAsync())
-		{
-		<option value="@category.Value">@category.Name</option>
-		}
-		</select>
-		@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Name", "Name"))">
-		</select>*@
+<div class="container">
+	
+</div>
 
-		@*<select asp-for="Form.Category.Name" asp-items="@(new SelectList(await productCategoryManager.GetCategoriesAsync(), "Value", "Name"))">*@
-		@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Value", "Name"))" multiple>
-			@foreach (var category in await productCategoryService.GetCategoriesAsync())
-		{
-		<option value="@category.Value">@category.Name</option>
-		}
-		</select>*@
+
+
+<partial name="/Views/Partials/_Header.cshtml" />
+<section class="backoffice">
+	<div class="banner">
+		<div class="container">
+			<h2>Backoffice - Add Products</h2>
+		</div>
 	</div>
 
-	<button type="submit" class="btn btn-success">ADD PRODUCT</button>
-</form>
+@*
+		<div class="choices">
+			<a asp-action="AddProduct" asp-controller="Admin" class="button-theme">Add Products</a>
+			<a asp-action="AddUser" asp-controller="Admin" class="button-theme">Add User</a>
+		</div>*@
+
+		<section class="addproducts-form">
+			<div class=container>
+			<div class="title">Add New Product</div>
+			<form method="post">
+				<div class="form-group">
+					<label asp-for="Name"></label>
+					<input asp-for="Name">
+					<small><span asp-validation-for="Name"></span></small>
+				</div>
+				
+				<div class="form-group">
+					<label asp-for="Price"></label>
+					<input asp-for="Price">
+					<small><span asp-validation-for="Price"></span></small>
+				</div>
+				<div class="form-group">
+					<label asp-for="Description"></label>
+					<input asp-for="Description">
+					<small><span asp-validation-for="Description"></span></small>
+				</div>
+
+		
+				<div class="mb-3">
+					<div>Select Categories</div>
+					<p>Ctrl + Click to select multiple choices</p>
+					<select asp-for="SelectedCategoryId" multiple>
+						@foreach (var category in await productCategoryService.GetCategoriesAsync())
+						{
+							<option value="@category.Value">@category.Name</option>
+						}
+					</select>
+				</div>
+
+				<button type="submit" class="button-theme">ADD PRODUCT</button>
+			</form>
+			</div>
+		</section>
+		
+</section>
+
+
+
+@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Name", "Name"))">
+					</select>*@
+
+@*<select asp-for="Form.Category.Name" asp-items="@(new SelectList(await productCategoryManager.GetCategoriesAsync(), "Value", "Name"))">*@
+@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Value", "Name"))" multiple>
+					@foreach (var category in await productCategoryService.GetCategoriesAsync())
+					{
+					<option value="@category.Value">@category.Name</option>
+					}
+					</select>*@

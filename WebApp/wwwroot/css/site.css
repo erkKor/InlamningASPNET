@@ -33,6 +33,10 @@ a {
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
+.button-theme:hover {
+  background-color: #aeaeae;
+  color: #292929;
+}
 
 ._card {
   position: relative;
@@ -531,7 +535,7 @@ header #menu a {
 }
 .subscribe .parent button {
   position: absolute;
-  background-color: #FA3150;
+  background-color: #292929;
   color: white;
   border: none;
   border-radius: 50px;
@@ -541,10 +545,22 @@ header #menu a {
 }
 @media (min-width: 768px) {
   .subscribe .parent button {
-    top: auto;
-    left: 71%;
+    top: 0;
+    left: 68%;
     width: 300px;
   }
+}
+
+.my-account {
+  margin-bottom: 1rem;
+}
+.my-account span {
+  font-weight: bold;
+}
+.my-account .footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 .contact-form {
@@ -761,6 +777,11 @@ input:not([type=checkbox]):focus {
 .login-form form .register-link {
   color: #FA3150;
 }
+.login-form .footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
 
 .register-form {
   padding: 20px 0 60px 0;
@@ -844,6 +865,56 @@ input:not([type=checkbox]):focus {
 }
 @media (min-width: 992px) {
   .register-form form button {
+    /*display: flex;*/
+    justify-self: flex-start;
+  }
+}
+
+.addproducts-form {
+  padding: 20px 0 60px 0;
+}
+@media (min-width: 992px) {
+  .addproducts-form {
+    padding: 60px 0;
+  }
+}
+.addproducts-form .container {
+  border: 1px solid rgba(174, 174, 174, 0.15);
+  padding: 30px 10rem;
+}
+@media (min-width: 768px) {
+  .addproducts-form .container {
+    /*border: 1px solid rgba(174, 174, 174, .05);*/
+    border: 1px solid black;
+  }
+}
+.addproducts-form .title {
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.addproducts-form form {
+  display: flex;
+  flex-direction: column;
+  column-gap: 30px;
+  row-gap: 15px;
+  grid-template-columns: 1fr;
+  /*        @include lg {
+      grid-template-columns: 1fr;
+  }*/
+}
+.addproducts-form form textarea {
+  height: 100px;
+  resize: none;
+}
+.addproducts-form form select {
+  border: 1px solid rgba(174, 174, 174, 0.35);
+  width: 300px;
+}
+.addproducts-form form button {
+  grid-area: button;
+}
+@media (min-width: 992px) {
+  .addproducts-form form button {
     /*display: flex;*/
     justify-self: flex-start;
   }
@@ -1056,16 +1127,12 @@ input:not([type=checkbox]):focus {
   background-color: #292929;
   color: white;
 }
-.backoffice form button {
+.backoffice table button {
   background-color: transparent;
   border: none;
   color: #292929;
-  font-weight: bold;
 }
 .backoffice button {
-  background-color: transparent;
-  border: none;
-  color: #292929;
   font-weight: bold;
 }
 .backoffice .choices {

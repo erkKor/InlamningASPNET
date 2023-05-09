@@ -1,9 +1,8 @@
 .backoffice {
-    .banner{
+    .banner {
         background-color: $color-dark;
         color: white;
         padding: 1rem 0;
-
     }
 
     table {
@@ -32,31 +31,23 @@
             background-color: $color-dark;
             color: white;
         }
-    }
 
-    form {
         button {
             background-color: transparent;
             border: none;
             color: $color-dark;
-            font-weight: bold;
-        }
-
-        i {
         }
     }
 
+
     button {
-        background-color: transparent;
-        border: none;
-        color: $color-dark;
         font-weight: bold;
     }
 
-    .choices{
-        display:flex;
-        justify-content:center;
-        margin-top:2rem;
-        gap:1rem;
+    .choices {
+        display: flex;
+        justify-content: center;
+        margin-top: 2rem;
+        gap: 1rem;
     }
 }

@@ -13,16 +13,18 @@ namespace WebApp.Helpers.Services
         private readonly SignInManager<AppUser> _signInManager;
         private readonly AdressService _adressService;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-		public AuthenticationService(UserManager<AppUser> userManager, AdressService adressService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
-		{
-			_userManager = userManager;
-			_adressService = adressService;
-			_signInManager = signInManager;
-			_roleManager = roleManager;
-		}
+        public AuthenticationService(UserManager<AppUser> userManager, AdressService adressService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, IWebHostEnvironment webHostEnvironment)
+        {
+            _userManager = userManager;
+            _adressService = adressService;
+            _signInManager = signInManager;
+            _roleManager = roleManager;
+            _webHostEnvironment = webHostEnvironment;
+        }
 
-		public async Task<bool> UserExistsAsync(Expression<Func<AppUser, bool>> expression)
+        public async Task<bool> UserExistsAsync(Expression<Func<AppUser, bool>> expression)
         {
             return await _userManager.Users.AnyAsync(expression);
         }
@@ -44,17 +46,42 @@ namespace WebApp.Helpers.Services
             var result = await _userManager.CreateAsync(appUser, model.Password);
             if (result.Succeeded)
             {
+                if (model.ImageFile != null)
+                {
+                    await UploadImageAsync(appUser, model.ImageFile!);
+                }
+
                 await _userManager.AddToRoleAsync(appUser, roleName);
                 var adressEntity = await _adressService.GetOrCreateAsync(model);
                 if (adressEntity != null)
                 {
                     await _adressService.AddAdressAsync(appUser, adressEntity);
+
                     return true;
                 }
             }
 
+           
+
             return false;
         }
+
+
+        public async Task<bool> UploadImageAsync(AppUser user, IFormFile image)
+        {
+            try
+            {
+                string folderPath = $"{_webHostEnvironment.WebRootPath}/images/profileImage/{user.UploadProfileImage!}";
+                await image.CopyToAsync(new FileStream(folderPath, FileMode.Create));
+                return true;
+
+            }
+            catch  { return false; }
+        }
+
+
+
+
 
         public async Task<bool> LoginAsync(LoginVM model)
         {

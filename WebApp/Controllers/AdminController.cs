@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Helpers.Services;
-using WebApp.Models;
 using WebApp.Models.Identity;
 using WebApp.Models.ViewModels;
 
@@ -27,54 +26,38 @@ namespace WebApp.Controllers
             _authService = authService;
         }
 
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
 		{
 			var users = await _userManager.Users.ToListAsync();
-			var userViewModels = new List<UserViewModel>();
+			var userViewModels = new List<UserVM>();
 
 			foreach (var user in users)
 			{
 				var roleNames = await _userManager.GetRolesAsync(user);
-
-				var userViewModel = new UserViewModel
+				var userViewModel = new UserVM
 				{
 					Id = user.Id,
 					FirstName = user.FirstName,
 					LastName = user.LastName,
 					Email = user.Email!,
 					RoleNames = roleNames.ToList(),
-					RoleName = roleNames.FirstOrDefault()
-
+					RoleName = roleNames.FirstOrDefault()!
 				};
 
 				userViewModels.Add(userViewModel);
 			}
 
 			ViewBag.Roles = _roleManager.Roles.Select(r => r.Name).ToList();
-
-			//var products = await _productService.GetAllProductsAsync();
-			//         var users = await _userService.GetAllUsersAsync();
 			return View(userViewModels);
 
         }
-
-
 
 		[HttpPost]
 		public async Task<IActionResult> UpdateUserRole(string userId, string roleName)
 		{
 			var user = await _userManager.FindByIdAsync(userId);
-			//var role = await _roleManager.FindByNameAsync(roleName);
-
 			var userRoles = await _userManager.GetRolesAsync(user!);
-			//if (user == null)
-			//{
-			//	return NotFound();
-			//}
-
 			// Remove the old role
-			//var oldRoleName = user.RoleName;
 			await _userManager.RemoveFromRolesAsync(user!, userRoles);
 
 			// Add the new role
@@ -84,13 +67,14 @@ namespace WebApp.Controllers
 		}
 
 
-        public async Task<IActionResult> AddProduct(AddProductVM viewModel)
+        public IActionResult AddProduct()
         {
-            //if (!await _userManager.IsInRoleAsync(await _userManager.GetUserAsync(User), "Admin"))
-            //{
-            //    return RedirectToAction("Index", "Denied");
-            //}
+            return View();
+        }
 
+		[HttpPost]
+		public async Task<IActionResult> AddProduct(AddProductVM viewModel)
+        {
             if(ModelState.IsValid)
             {
 				await _productService.AddProductAsync(viewModel);
@@ -101,7 +85,13 @@ namespace WebApp.Controllers
         }
 
 
-        public async Task<IActionResult> AddUser(UserRegisterVM viewModel)
+		public IActionResult AddUser()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> AddUser(UserRegisterVM viewModel)
 		{
 			if (ModelState.IsValid)
 			{
@@ -116,10 +106,6 @@ namespace WebApp.Controllers
 		}
 	}
 }
-
-
-
-
 
 
 

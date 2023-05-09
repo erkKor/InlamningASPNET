@@ -1,39 +1,69 @@
-﻿    //$(function() {
-    //    $('.roles-wrapper .edit-btn').on('click', function () {
-    //        // Get the user ID from the data attribute
-    //        var userId = $(this).closest('.roles-wrapper').data('user-id');
-    //        // Hide the role names and show the role select
-    //        $(this).closest('.role-names').hide();
-    //        $(this).closest('.roles-wrapper').find('.role-select').show();
-    //    });
+﻿
+$(function () {
+    $('.roles-wrapper .edit-btn').on('click', function () {
+        // Hide the role names and show the role select
+        $(this).closest('.role-names').hide();
+        $(this).closest('.roles-wrapper').find('.role-select').show();
+    });
 
-    //$('.roles-wrapper .cancel-btn').on('click', function() {
-    //        // Get the user ID from the data attribute
-    //        var userId = $(this).closest('.roles-wrapper').data('user-id');
-    //// Show the role names and hide the role select
-    //$(this).closest('.role-select').hide();
-    //$(this).closest('.roles-wrapper').find('.role-names').show();
-    //    });
+    $('.roles-wrapper .cancel-btn').on('click', function () {
+        // Show the role names and hide the role select
+        $(this).closest('.role-select').hide();
+        $(this).closest('.roles-wrapper').find('.role-names').show();
+    });
 
-    //$('.roles-wrapper .save-btn').on('click', function() {
-    //        // Get the user ID from the data attribute
-    //        var userId = $(this).closest('.roles-wrapper').data('user-id');
-    //// Get the selected role
-    //var role = $(this).closest('.role-select').find('select[name="roles"]').val();
-    //// Send an AJAX request to update the user's role
-    //$.ajax({
-    //    url: '/users/update-role',
-    //method: 'POST',
-    //data: {userId: userId, role: role },
-    //success: function() {
-    //    // Show a success message or refresh the page
-    //},
-    //error: function() {
-    //    // Show an error message or handle the errord
-    //}
-    //        });
-    //    });
-    //});
+    $('.roles-wrapper .save-btn').on('click', function () {
+        // Get the selected role
+        var role = $(this).closest('.role-select').find('select[name="roles"]').val();
+        // Update the user's role using a form submit
+        $(this).closest('form').append('<input type="hidden" name="role" value="' + role + '">');
+        $(this).closest('form').submit();
+    });
+});
+
+
+
+// MODAL
+//function showUserInfoModal(firstName, lastName, email, phonenumber, adress, city, postalcode, company) {
+//    $('#firstName').text(firstName);
+//    $('#lastName').text(lastName);
+//    $('#email').text(email);
+//    $('#phonenumber').text(phonenumber);
+//    $('#adress').text(adress);
+//    $('#city').text(city);
+//    $('#postalcode').text(postalcode);
+//    $('#company').text(company);
+//    // Set more fields here
+//    $('#myModal').modal('show');
+//}
+
+
+//$(document).ready(function () {
+//    $('.user-row').click(function () {
+//        var firstName = $(this).data('firstname');
+//        var lastName = $(this).data('lastname');
+//        var email = $(this).data('email');
+//        var phonenumber = $(this).data('phonenumber');
+//        var adress = $(this).data('adress');
+//        var city = $(this).data('city');
+//        var postalcode = $(this).data('postalcode');
+//        var company = $(this).data('company');
+//        showUserInfoModal(firstName, lastName, email, phonenumber, adress, city, postalcode, company);
+
+//        $('#myModal').modal('show');
+//    });
+//});
+
+//$('#myModal').on('shown.bs.modal', function (e) {
+//    var firstName = $(e.relatedTarget).data('firstname');
+//    $('#firstName').text(firstName);
+//});
+
+
+
+
+
+
 document.getElementById("defaultBtn").click();
 
 function openCity(evt, cityName) {
@@ -59,26 +89,3 @@ function openCity(evt, cityName) {
 
 
 
-
-
-$(function () {
-    $('.roles-wrapper .edit-btn').on('click', function () {
-        // Hide the role names and show the role select
-        $(this).closest('.role-names').hide();
-        $(this).closest('.roles-wrapper').find('.role-select').show();
-    });
-
-    $('.roles-wrapper .cancel-btn').on('click', function () {
-        // Show the role names and hide the role select
-        $(this).closest('.role-select').hide();
-        $(this).closest('.roles-wrapper').find('.role-names').show();
-    });
-
-    $('.roles-wrapper .save-btn').on('click', function () {
-        // Get the selected role
-        var role = $(this).closest('.role-select').find('select[name="roles"]').val();
-        // Update the user's role using a form submit
-        $(this).closest('form').append('<input type="hidden" name="role" value="' + role + '">');
-        $(this).closest('form').submit();
-    });
-});

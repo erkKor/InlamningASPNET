@@ -1,23 +1,9 @@
 ﻿<header>
     <div class="container">
         <div class="logo-bar">
-            <img src="images/Logo.svg">
+            <img src="~/images/logo.svg"/>
             bmerketo
             <button><i class="fa-regular fa-bars"></i></button>
-            
-            @*@if (signInManager.IsSignedIn(User) && (await userManager.IsInRoleAsync(await userManager.GetUserAsync(User), "Admin")))
-            {
-                <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
-
-            }*@
-            @*@if (signInManager.IsSignedIn(User))
-            {
-                var roles = await userManager.GetRolesAsync(await userManager.GetUserAsync(User));
-                if (roles.Contains("Admin"))
-                {
-                    <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>
-                }
-            }*@
             @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
                 <a asp-action="Index" asp-controller="Admin" class="m-4">Admin</a>

@@ -1,7 +1,19 @@
-﻿@{
-	ViewData["Title"] = User.FindFirst("DisplayName")?.Value;
-}
+﻿@model UserVM
 
-<div>
-	@ViewData["Title"]
-</div>
+<partial name="/Views/Partials/_Header.cshtml" />
+<section class="my-account">
+	<div class="container">
+		<h1>My Account</h1>
+		<p><span>Name: &nbsp;</span> @Model.FirstName @Model.LastName</p>
+		<p><span>E-mail: &nbsp;</span> @Model.Email</p>
+		<p><span>Phonenumber: &nbsp;</span> @Model.PhoneNumber</p>
+		<p><span>Adress: &nbsp;</span> @Model.StreetName, &nbsp;@Model.PostalCode @Model.City</p>
+		<p><span>Company: &nbsp;</span> @Model.Company</p>
+
+		<img src="~/images/profileImage/@Model.ImageUrl" />
+	</div>
+
+	<partial name="/Views/Partials/_Footer.cshtml" />
+</section>
+
+

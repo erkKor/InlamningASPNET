@@ -16,21 +16,16 @@ namespace WebApp.Controllers
 
         public async Task<IActionResult> Index()
 		{
-			var products = await _productService.GetAllProductsAsync();
-			var bestCollection = products.Where(p => p.Category.Contains("New"));
-			var topSellers = products.Where(p => p.Category.Contains("Popular"));
-
 			var viewModel = new HomeControllerVM
 			{
 				BestCollection = new CardGridVM
 				{
-					//GridItems = await _productService.GetAllProductsAsync(),
-					GridItems = bestCollection,
+					GridItems = await _productService.GetProductsByCategoryAsync("New"),
 					Categories = await _productService.GetProductCategoriesAsync()
 				},
 				TopSellers = new CardGridVM
 				{
-					GridItems = topSellers,
+					GridItems = await _productService.GetProductsByCategoryAsync("Popular")
 				}
 			};
 
