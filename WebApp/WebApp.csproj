@@ -47,7 +47,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\css\sections\Backoffice\" />
-    <Folder Include="wwwroot\images\profileImage\" />
   </ItemGroup>
 
 </Project>

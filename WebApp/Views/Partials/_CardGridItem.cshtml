@@ -1,7 +1,8 @@
 ﻿@model CardGridItemVM
 
 <a asp-controller="products" asp-action="details" asp-route-id="@Model.Id" class="_card">
-    <img src="~/images/placeholders/270x295.svg">
+    @*<img src="~/images/placeholders/270x295.svg" >*@
+    <img src="@Model.ImageUrl" >
     <div class="_card-content">
         <p>@Model.Name</p>
         <div class="price">

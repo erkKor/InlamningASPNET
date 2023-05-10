@@ -43,6 +43,7 @@ namespace WebApp.Helpers.Services
                 Name = p.Name,
                 Description = p.Description,
                 Price = p.Price,
+                ImageUrl = p.ImageUrl!,
                 Category = p.Category.Select(pc => pc.Category.CategoryName).ToArray()
             });
         }
@@ -56,6 +57,7 @@ namespace WebApp.Helpers.Services
 				Name = p.Name,
 				Description = p.Description,
 				Price = p.Price,
+				ImageUrl = p.ImageUrl!,
 				Category = p.Category.Select(pc => pc.Category.CategoryName).ToArray()
 			});
 		}

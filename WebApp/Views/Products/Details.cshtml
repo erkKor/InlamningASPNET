@@ -1,29 +1,27 @@
-﻿@model CardGridItemVM
-<partial name="/Views/Partials/_Header.cshtml" />
+﻿@{
+    ViewBag.Page = "PRODUCT DETAILS";
+}
+@model CardGridItemVM
 
-<section class="product-showcase">
-    <div class="container">
-        <h3>SHOP</h3>
-        <div class="links">
-            <a href="">HOME</a>
-            <p>PRODUCT DETAILS</p>
-        </div>
-    </div>
-</section>
+<partial name="/Views/Partials/_Header.cshtml" />
+<partial name="/Views/Partials/_Breadcrumb.cshtml" />
+
 
 <section class="product-details">
     <div class="container">
         <div class="imagegrid-prinfo">
             <div class="image-grid">
-                <img src="images/501x430.svg" id="img1">
-                <img src="images/120x113.svg">
-                <img src="images/120x113.svg">
-                <img src="images/120x113.svg">
-                <img src="images/120x113.svg">
+                @*<img src="~/images/placeholders/501x430.svg" id="img1"/>*@
+                <img src="@Model.ImageUrl" id="img1"/>
+                <img src="@Model.ImageUrl" />
+                <img src="@Model.ImageUrl" />
+                <img src="@Model.ImageUrl" />
+                <img src="@Model.ImageUrl" />
+                @*<img src="~/images/placeholders/120x113.svg" />*@
             </div>
             <div class="product-info">
                 <h4>@Model.Name</h4>
-                <p class="_text-info">Lirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p class="_text-info">@Model.Description</p>
                 <div class="stars">
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
@@ -32,7 +30,7 @@
                     <i class="fa-solid fa-star"></i>
                     <p>16 Reviews</p>
                 </div>
-                <p class="price">$30</p>
+                <p class="price">$@Model.Price</p>
                 <div class="qty-addtocart">
                     <div class="qty-btn-container">
                         <button>-</button>
@@ -92,7 +90,7 @@
     <div class="container">
         <div class="_card-grid">
             <div class="_card">
-                <img src="images/270x295.svg">
+                <img src="~/images//placeholders/270x295.svg" />
                 <div class="_card-content">
                     <p>Apple watch series</p>
                     <div class="price">
@@ -105,7 +103,7 @@
                 </button>
             </div>
             <div class="_card">
-                <img src="images/270x295.svg">
+                <img src="~/images//placeholders/270x295.svg" />
                 <div class="_card-content">
                     <p>Apple watch series</p>
                     <div class="price">
@@ -118,7 +116,7 @@
                 </button>
             </div>
             <div class="_card">
-                <img src="images/270x295.svg">
+                <img src="~/images//placeholders/270x295.svg" />
                 <div class="_card-content">
                     <p>Apple watch series</p>
                     <div class="price">
@@ -131,7 +129,7 @@
                 </button>
             </div>
             <div class="_card">
-                <img src="images/270x295.svg">
+                <img src="~/images//placeholders/270x295.svg" />
                 <div class="_card-content">
                     <p>Apple watch series</p>
                     <div class="price">

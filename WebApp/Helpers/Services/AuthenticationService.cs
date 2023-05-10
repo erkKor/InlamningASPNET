@@ -42,27 +42,26 @@ namespace WebApp.Helpers.Services
             if (!await _userManager.Users.AnyAsync())
                 roleName = "Admin";
 
+            if(model.ImageFile  == null) 
+            {
+                appUser.UploadProfileImage = "standardProfileImg.webp";
+            }
+            if (model.ImageFile != null)
+            {
+                await UploadImageAsync(appUser, model.ImageFile!);
+            }
 
             var result = await _userManager.CreateAsync(appUser, model.Password);
             if (result.Succeeded)
             {
-                if (model.ImageFile != null)
-                {
-                    await UploadImageAsync(appUser, model.ImageFile!);
-                }
-
                 await _userManager.AddToRoleAsync(appUser, roleName);
                 var adressEntity = await _adressService.GetOrCreateAsync(model);
                 if (adressEntity != null)
                 {
                     await _adressService.AddAdressAsync(appUser, adressEntity);
-
                     return true;
                 }
             }
-
-           
-
             return false;
         }
 

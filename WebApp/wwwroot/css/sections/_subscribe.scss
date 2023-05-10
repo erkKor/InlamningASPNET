@@ -1,10 +1,12 @@
-.subscribe{
+.subscribe {
     background-color: $color-gray1;
+    background-image: url('../../images/sections/subscribe.png');
     display: flex;
     justify-content: center;
     align-items: center;
     height: 370px;
-    .container{
+
+    .container {
         position: relative;
         display: flex;
         align-items: center;
@@ -13,41 +15,50 @@
         height: 210px;
     }
 
-    .parent{
+    .parent {
         position: relative;
         display: flex;
         flex-direction: column;
-        @include md{
+
+        @include md {
             display: block;
         }
+
         width: 80%;
-        input{
+
+        input {
             height: 60px;
             width: 100%;
             padding-left: 3rem;
             border-radius: 50px;
             border: 1px solid rgba(174, 174, 174, .4);
-            @include md{
+
+            @include md {
                 width: 100%;
             }
-            
         }
-    
-        button{
+
+        button {
             position: absolute;
             background-color: $color-dark;
             color: white;
             border: none;
             border-radius: 50px;
             height: 60px;
-            top:4rem;
+            top: 4rem;
             width: 100%;
-            @include md{
-                top:0;
+            transition: 0.3s ease-in-out;
+
+            @include md {
+                top: 0;
                 left: calc(68%);
                 width: 300px;
             }
-            
+
+            &:hover {
+                background-color: $color-theme;
+                color: white;
+            }
         }
     }
 }

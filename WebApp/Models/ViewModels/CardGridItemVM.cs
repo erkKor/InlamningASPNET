@@ -20,7 +20,7 @@ namespace WebApp.Models.ViewModels
                 Name = product.Name,
                 Description = product.Description,
                 Price = product.Price,
-                ImageUrl = null! // set the image URL as needed
+                ImageUrl = product.ImageUrl!
             };
         }
 

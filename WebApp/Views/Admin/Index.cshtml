@@ -26,12 +26,8 @@
 				<th>Role</th>
 				@*<th>Edit</th>*@
 			</tr>
-
-
-
 			@foreach (var user in Model)
 			{
-				@*<tr data-firstname="@user.FirstName" data-lastname="@user.LastName" data-email="@user.Email" data-phone="@user.PhoneNumber">*@
 				<tr>
 					<td>@user.FirstName @user.LastName</td>
 					<td>@user.Email</td>
@@ -44,7 +40,8 @@
 									<button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
 								}
 							</div>
-
+							
+							@*Shows when pressing Edit button*@
 							<div class="role-select" style="display: none">
 								<form method="post" action="@Url.Action("UpdateUserRole", "Admin")">
 									<input type="hidden" name="userId" value="@user.Id" />
@@ -57,71 +54,11 @@
 									<button type="submit">Save</button>
 									<button class="cancel-btn"><i class="fa-solid fa-xmark"></i></button>
 								</form>
-
 							</div>
 						</div>
 					</td>
 				</tr>
 			}
-
-@*
-			<div id="myModal" class="modal fade modal-custom" role="dialog">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title">User Information</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-						<div class="modal-body">
-							<p><span id="firstName"></span></p>
-							<p><span id="lastName"></span></p>
-							<p><span id="email"></span></p>
-							<p><span id="phonenumber"></span></p>
-							<p><span id="adress"></span></p>
-							<p><span id="city"></span></p>
-							<p><span id="postalcode"></span></p>
-							<p><span id="company"></span></p>
-						</div>
-					</div>
-				</div>
-			</div>*@
-
-
-
-			@*@foreach (var user in Model)
-			{
-				<tr>
-					<td>@user.FirstName @user.LastName</td>
-					<td>@user.Email</td>
-					<td>
-						<div class="roles-wrapper" data-user-id="@user.Id">
-							<div class="role-names">
-								@foreach (var roleName in user.RoleNames)
-								{
-									<span>@roleName</span>
-									<button class="edit-btn"><i class="fa-solid fa-pen-to-square"></i></button>
-								}
-							</div>
-
-							<div class="role-select" style="display: none">
-								<form method="post" action="@Url.Action("UpdateUserRole", "Admin")">
-									<input type="hidden" name="userId" value="@user.Id" />
-									<select name="roleName">
-										@foreach (var roleName in ViewBag.Roles)
-										{
-											<option value="@roleName" selected="@((roleName == user.RoleName) ? "selected" : null)">@roleName</option>
-										}
-									</select>
-									<button type="submit">Save</button>
-									<button class="cancel-btn"><i class="fa-solid fa-xmark"></i></button>
-								</form>
-
-							</div>
-						</div>
-					</td>
-				</tr>
-			}*@
-
 		</table>
 	</div>
 </section>

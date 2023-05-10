@@ -16,6 +16,9 @@ namespace WebApp.Models.ViewModels
         [Display(Name = "Product Description*")]
         [Required(ErrorMessage = "You must enter a description")]
         public string Description { get; set; } = null!;
+
+        [Display(Name = "Product Image URL (optional)")]
+        public string? ImageUrl { get; set; }
         public int[] SelectedCategoryId { get; set; } = null!;
 
 
@@ -26,6 +29,7 @@ namespace WebApp.Models.ViewModels
 				Name = model.Name,
 				Description = model.Description,
 				Price = model.Price,
+                ImageUrl = model.ImageUrl,
 			};
 		}
 	}

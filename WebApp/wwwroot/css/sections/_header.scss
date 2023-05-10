@@ -1,12 +1,13 @@
-header{
-    .container{
-        @include md{
+header {
+    .container {
+        @include md {
             display: flex;
             justify-content: space-between;
             margin-top: 1rem;
         }
     }
-    .logo-bar{
+
+    .logo-bar {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -14,46 +15,59 @@ header{
         font-size: 27px;
         font-weight: bold;
 
-        button{
-            border:none;
+        button {
+            border: none;
             background-color: transparent;
             font-size: 22px;
-            @include md{
+
+            @include md {
                 display: none;
             }
         }
     }
-    #menu{
+
+    #menu {
         @include md {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-        .menu-links{
+
+        .menu-links {
             display: flex;
             flex-direction: column;
             margin-left: 1rem;
-            @include md{
+
+            @include md {
                 flex-direction: row;
-                a{
+
+                a {
                     margin-right: 2.5rem;
                 }
             }
         }
-        .menu-icons{
+
+        .menu-icons {
             display: none;
-            @include md{
+
+            @include md {
                 display: flex;
-                a{
+
+                a {
                     margin-right: 1rem;
                     color: $color-gray;
                 }
             }
         }
-    
-        a{
+
+        a {
             text-decoration: none;
-            color:$color-dark;
+            color: $color-dark;
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                color: $color-theme;
+            }
         }
     }
 }

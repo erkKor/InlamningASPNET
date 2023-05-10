@@ -29,81 +29,92 @@ a{
     transition: 0.3s ease-in-out;
 
     &:hover{
-        background-color: $color-gray;
-        color: $color-dark;
+        background-color: $color-theme;
+        color: white;
     }
 }
 
-._card{
+._card {
     position: relative;
     text-align: start;
     height: 100%;
     overflow: hidden;
-    &:hover{
-        box-shadow: 0px 0px 20px 1px rgba(174,175,174,0.4);
-        .add-cart{
-            bottom: 5px;
 
+    &:hover {
+        .add-cart {
+            right: 0;
         }
     }
 
-    img{
+    img {
         width: 100%;
-        height: auto;
+        height: 295px;
         margin-bottom: 5px;
-        @include md{
+
+        @include md {
             margin-bottom: 0;
             // width: 300px;
             margin-left: auto;
             margin-right: auto;
         }
-       
     }
-    ._card-content{
+
+    ._card-content {
         background-color: white;
         height: 65px;
         width: 100%;
-        @include md{
+
+        @include md {
             margin: 0.7rem 0;
             border-bottom: 1px solid rgba(174, 174, 174, .15);
         }
-        
-        .price{
+
+        .price {
             display: flex;
             margin-top: 0.2rem;
-            
-            .discount-price{
+
+            .discount-price {
                 margin-right: 1rem;
             }
-            .original-price{
+
+            .original-price {
                 text-decoration: line-through;
-                
             }
-            p{
+
+            p {
                 font-size: 16px;
                 color: $color-gray20;
                 font-weight: 500;
             }
         }
 
-        p{
+        p {
             margin: 0;
             font-size: 18px;
             font-weight: 600;
             line-height: 20px;
-            @include md{
+
+            @include md {
                 line-height: normal;
             }
         }
     }
 
-    .add-cart{
+    ul {
+        list-style: none;
         position: absolute;
-        // bottom: 5px;
-        bottom: -50px;
+
+        li {
+            list-style-type: none;
+        }
+    }
+
+    .add-cart {
+        position: absolute;
+        bottom: 40px;
+        right: -50px;
         transition: 0.3s ease-in-out;
-        right:10px;
-        border:none;
+        border: none;
         background-color: transparent;
         font-weight: 700;
         font-size: 25px;
