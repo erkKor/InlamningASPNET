@@ -9,17 +9,20 @@ namespace WebApp.Models.ViewModels
 
 		[Display(Name = "First Name*")]
 		[Required(ErrorMessage = "You must enter a firstname")]
-		public string FirstName { get; set; } = null!;
+        [MinLength(2, ErrorMessage = "First name must contain atleast 2 characters")]
+        public string FirstName { get; set; } = null!;
 
 
 		[Display(Name = "Last Name*")]
 		[Required(ErrorMessage = "You must enter a lastname")]
-		public string LastName { get; set; } = null!;
+        [MinLength(2, ErrorMessage = "Last name must contain atleast 2 characters")]
+        public string LastName { get; set; } = null!;
 
 
 		[Display(Name = "Street Name*")]
-		[Required(ErrorMessage = "You must enter a streetname")]
-		public string StreetName { get; set; } = null!;
+        [Required(ErrorMessage = "You must enter a streetname")]
+        [MinLength(5, ErrorMessage = "Streetname must contain atleast 5 characters")]
+        public string StreetName { get; set; } = null!;
 
 
 		[Display(Name = "Postal Code*")]
@@ -29,7 +32,8 @@ namespace WebApp.Models.ViewModels
 
 		[Display(Name = "City*")]
 		[Required(ErrorMessage = "You must enter a city")]
-		public string City { get; set; } = null!;
+        [MinLength(2, ErrorMessage = "City must contain atleast 2 characters")]
+        public string City { get; set; } = null!;
 
 
 		[Display(Name = "Mobile (optional)")]

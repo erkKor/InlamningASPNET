@@ -9,10 +9,6 @@
         border: 1px solid rgba(174, 174, 174, .15);
         padding: 30px 10rem;
 
-        @include md {
-            /*border: 1px solid rgba(174, 174, 174, .05);*/
-            border: 1px solid black;
-        }
     }
 
     .title {
@@ -26,10 +22,6 @@
         column-gap: 30px;
         row-gap: 15px;
         grid-template-columns: 1fr;
-        /*        @include lg {
-            grid-template-columns: 1fr;
-        }*/
-
         textarea {
             height: 100px;
             resize: none;
@@ -44,7 +36,6 @@
             grid-area: button;
 
             @include lg {
-                /*display: flex;*/
                 justify-self: flex-start;
             }
         }

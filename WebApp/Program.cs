@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using WebApp.Helpers;
 using WebApp.Helpers.Repositories;
 using WebApp.Helpers.Services;
 using WebApp.Models.Contexts;
@@ -9,9 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 builder.Services.AddAuthorization();
+#region Repos and Services
 builder.Services.AddScoped<AdressRepository>();
 builder.Services.AddScoped<UserAdressRepository>();
 builder.Services.AddScoped<ProductRepository>();
@@ -25,17 +26,15 @@ builder.Services.AddScoped<ProductCategoryService>();
 builder.Services.AddScoped<ContactFormService>();
 builder.Services.AddScoped<AuthenticationService>();
 builder.Services.AddScoped<UserService>();
+#endregion 
+
 builder.Services.AddIdentity<AppUser, IdentityRole>(x =>
 {
 	x.SignIn.RequireConfirmedAccount = false;
 	x.Password.RequiredLength = 8;
 	x.User.RequireUniqueEmail = true;
 }).AddEntityFrameworkStores<DataContext>()
-//.AddClaimsPrincipalFactory<CustomClaimsPrincipalFactory>()
 .AddRoleManager<RoleManager<IdentityRole>>();
-
-
-
 
 builder.Services.ConfigureApplicationCookie(x =>
 {
@@ -44,12 +43,6 @@ builder.Services.ConfigureApplicationCookie(x =>
 	x.AccessDeniedPath = "/denied";
 });
 
-
-//builder.Services.AddAuthorization(options =>
-//{
-//	options.AddPolicy("AdminOnly", policy =>
-//		policy.RequireRole("Admin"));
-//});
 
 var app = builder.Build();
 app.UseHsts();

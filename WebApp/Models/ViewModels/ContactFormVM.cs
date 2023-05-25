@@ -7,7 +7,8 @@ namespace WebApp.Models.ViewModels
 	public class ContactFormVM
 	{
 		[Display(Name = "Name*")]
-		[Required(ErrorMessage = "You must enter a name")]
+        [MinLength(2, ErrorMessage = "Name must contain atleast 2 characters")]
+        [Required(ErrorMessage = "You must enter a name")]
 		public string Name { get; set; } = null!;
 
 		[Display(Name = "E-mail*")]
@@ -25,7 +26,8 @@ namespace WebApp.Models.ViewModels
 		[Display(Name = "Message*")]
 		[DataType(DataType.MultilineText)]
 		[Required(ErrorMessage = "You must write a message")]
-		public string Message { get; set; } = null!;
+        [MinLength(2, ErrorMessage = "Your message must contain atleast 2 characters")]
+        public string Message { get; set; } = null!;
 
 
 

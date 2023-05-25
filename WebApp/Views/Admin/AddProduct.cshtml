@@ -1,25 +1,14 @@
 ﻿@model AddProductVM
 
-<div class="container">
-	
-</div>
-
-
-
 <partial name="/Views/Partials/_Header.cshtml" />
 <section class="backoffice">
 	<div class="banner">
 		<div class="container">
+			<a class="link" asp-controller="Admin" asp-action="Index"><i class="fa-solid fa-arrow-left"></i></a>
 			<h2>Backoffice - Add Products</h2>
 		</div>
 	</div>
-
-@*
-		<div class="choices">
-			<a asp-action="AddProduct" asp-controller="Admin" class="button-theme">Add Products</a>
-			<a asp-action="AddUser" asp-controller="Admin" class="button-theme">Add User</a>
-		</div>*@
-
+	
 		<section class="addproducts-form">
 			<div class=container>
 			<div class="title">Add New Product</div>
@@ -64,16 +53,3 @@
 		</section>
 		
 </section>
-
-
-
-@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Name", "Name"))">
-					</select>*@
-
-@*<select asp-for="Form.Category.Name" asp-items="@(new SelectList(await productCategoryManager.GetCategoriesAsync(), "Value", "Name"))">*@
-@*<select asp-for="SelectedCategoryId" asp-items="@(new SelectList(await productCategoryService.GetCategoriesAsync(), "Value", "Name"))" multiple>
-					@foreach (var category in await productCategoryService.GetCategoriesAsync())
-					{
-					<option value="@category.Value">@category.Name</option>
-					}
-					</select>*@

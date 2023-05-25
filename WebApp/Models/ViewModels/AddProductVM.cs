@@ -7,6 +7,7 @@ namespace WebApp.Models.ViewModels
     {
         [Display(Name = "Product Name*")]
         [Required(ErrorMessage = "You must enter a product name")]
+        [MinLength(2, ErrorMessage = "Product name must be atleast 2 characters")]
         public string Name { get; set; } = null!;
 
         [Display(Name = "Product Price*")]
@@ -15,6 +16,7 @@ namespace WebApp.Models.ViewModels
 
         [Display(Name = "Product Description*")]
         [Required(ErrorMessage = "You must enter a description")]
+        [MinLength(2, ErrorMessage = "Product description must be atleast 2 characters")]
         public string Description { get; set; } = null!;
 
         [Display(Name = "Product Image URL (optional)")]

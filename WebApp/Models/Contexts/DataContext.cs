@@ -11,7 +11,6 @@ namespace WebApp.Models.Contexts
 		public DataContext(DbContextOptions<DataContext> options) : base(options)
 		{
 		}
-
 		public DbSet<AdressEntity> Adresses { get; set; }
 		public DbSet<UserAdressEntity> UserAdresses { get; set; }
 		public DbSet<ProductEntity> Products { get; set; }
@@ -19,53 +18,21 @@ namespace WebApp.Models.Contexts
 		public DbSet<ProductCategoryEntity> ProductCategories { get; set; }
 		public DbSet<ContactFormEntity> ContactFormMessages { get; set; }
 
-		//protected override void OnModelCreating(ModelBuilder builder)
-		//{
-		//	builder.Entity<CategoryEntity>().HasData
-		//	(
-		//		new CategoryEntity { Id = 1, CategoryName = "New" },
-		//		new CategoryEntity { Id = 2, CategoryName = "Popular" },
-		//		new CategoryEntity { Id = 3, CategoryName = "Featured" }
-		//	);
-		//}
+		protected override void OnModelCreating(ModelBuilder builder)
+		{
+			base.OnModelCreating(builder);
 
-
-
-		//protected override void OnModelCreating(ModelBuilder builder)
-		//{
-
-		//	var roleId = Guid.NewGuid().ToString();
-		//	var userId = Guid.NewGuid().ToString();	
-
-
-		//	base.OnModelCreating(builder);
-
-		//	builder.Entity<IdentityRole>().HasData(new IdentityRole
-		//	{
-		//		Id = roleId,
-		//		Name = "Admin",
-		//		NormalizedName = "ADMIN"
-		//	});
-
-
-		//	var passwordHasher = new PasswordHasher<AppUser>();
-
-		//	builder.Entity<AppUser>().HasData(new AppUser
-		//	{
-		//		Id = userId,
-		//		UserName = " ",
-		//		FirstName = " ",
-		//		LastName = "Adminlastname",
-		//		Email = "admin@domain.com",
-		//		PasswordHash = passwordHasher.HashPassword(null!, "Admin123!"),
-
-		//	});
-
-		//	builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-		//	{
-		//		RoleId = roleId,
-		//		UserId = userId,
-		//	});
-		//}
+			builder.Entity<CategoryEntity>().HasData
+			(
+				new CategoryEntity { Id = 1, CategoryName = "New" },
+				new CategoryEntity { Id = 2, CategoryName = "Popular" },
+				new CategoryEntity { Id = 3, CategoryName = "Featured" }
+			);
+			builder.Entity<IdentityRole>().HasData
+			(
+				new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "Admin", NormalizedName = "ADMIN" },
+				new IdentityRole { Id = Guid.NewGuid().ToString(), Name = "User", NormalizedName = "USER" }
+			);
+		}
 	}
 }

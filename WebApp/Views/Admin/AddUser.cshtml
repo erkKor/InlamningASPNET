@@ -1,18 +1,16 @@
 ﻿@{
-	ViewBag.RegisterTitle = "Add user";
+	ViewBag.RegisterTitle = "Add New User";
 }
 
 <partial name="/Views/Partials/_Header.cshtml" />
 <section class="backoffice">
 	<div class="banner">
 		<div class="container">
+			<a class="link" asp-controller="Admin" asp-action="Index"><i class="fa-solid fa-arrow-left"></i></a>
 			<h2>Backoffice - Add User</h2>
 		</div>
 	</div>
 	<div class=container>
-
-
-		<h1>Add User ADMIN</h1>
 		<partial name="/Views/Partials/_RegisterForm.cshtml" />
 	</div>
 </section>

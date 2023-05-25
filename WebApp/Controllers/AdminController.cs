@@ -49,7 +49,6 @@ namespace WebApp.Controllers
 
 			ViewBag.Roles = _roleManager.Roles.Select(r => r.Name).ToList();
 			return View(userViewModels);
-
         }
 
 		[HttpPost]
@@ -57,14 +56,19 @@ namespace WebApp.Controllers
 		{
 			var user = await _userManager.FindByIdAsync(userId);
 			var userRoles = await _userManager.GetRolesAsync(user!);
-			// Remove the old role
+
 			await _userManager.RemoveFromRolesAsync(user!, userRoles);
-
-			// Add the new role
 			await _userManager.AddToRoleAsync(user!, roleName);
-
 			return RedirectToAction("Index");
 		}
+
+		[HttpPost]
+		public async Task<IActionResult> RemoveUser(string userId)
+		{
+			var user = await _userManager.FindByIdAsync(userId);
+			await _userManager.DeleteAsync(user!);
+            return RedirectToAction("Index");
+        }
 
 
         public IActionResult AddProduct()
@@ -106,29 +110,3 @@ namespace WebApp.Controllers
 		}
 	}
 }
-
-
-
-
-// ###################
-// OLD CODE FOR INDEX
-
-//if (!User.IsInRole("Admin"))
-//{
-//    return RedirectToAction("AccessDenied");
-//}
-
-//var userClaims = User.Claims;
-
-//foreach (var claim in userClaims)
-//{
-//    var claimType = claim.Type;
-//    var claimValue = claim.Value;
-//    // do something with the claim information
-//}
-
-
-//if (!await _userManager.IsInRoleAsync(await _userManager.GetUserAsync(User), "Admin"))
-//{
-//    return RedirectToAction("Index", "Denied");
-//}

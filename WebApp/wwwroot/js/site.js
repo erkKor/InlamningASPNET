@@ -1,4 +1,4 @@
-﻿
+﻿// Update User role in admin section
 $(function () {
     $('.roles-wrapper .edit-btn').on('click', function () {
         // Hide the role names and show the role select
@@ -22,52 +22,9 @@ $(function () {
 });
 
 
-
-// MODAL
-//function showUserInfoModal(firstName, lastName, email, phonenumber, adress, city, postalcode, company) {
-//    $('#firstName').text(firstName);
-//    $('#lastName').text(lastName);
-//    $('#email').text(email);
-//    $('#phonenumber').text(phonenumber);
-//    $('#adress').text(adress);
-//    $('#city').text(city);
-//    $('#postalcode').text(postalcode);
-//    $('#company').text(company);
-//    // Set more fields here
-//    $('#myModal').modal('show');
-//}
-
-
-//$(document).ready(function () {
-//    $('.user-row').click(function () {
-//        var firstName = $(this).data('firstname');
-//        var lastName = $(this).data('lastname');
-//        var email = $(this).data('email');
-//        var phonenumber = $(this).data('phonenumber');
-//        var adress = $(this).data('adress');
-//        var city = $(this).data('city');
-//        var postalcode = $(this).data('postalcode');
-//        var company = $(this).data('company');
-//        showUserInfoModal(firstName, lastName, email, phonenumber, adress, city, postalcode, company);
-
-//        $('#myModal').modal('show');
-//    });
-//});
-
-//$('#myModal').on('shown.bs.modal', function (e) {
-//    var firstName = $(e.relatedTarget).data('firstname');
-//    $('#firstName').text(firstName);
-//});
-
-
-
-
-
-
+// Product details Tabs
 document.getElementById("defaultBtn").click();
-
 function openCity(evt, cityName) {
-    // Declare all variables
     var i, tabcontent, tablinks;
 
     // Get all elements with class="tabcontent" and hide them
@@ -86,6 +43,3 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
 }
-
-
-

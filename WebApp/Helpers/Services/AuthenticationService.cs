@@ -12,15 +12,13 @@ namespace WebApp.Helpers.Services
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly AdressService _adressService;
-        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AuthenticationService(UserManager<AppUser> userManager, AdressService adressService, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, IWebHostEnvironment webHostEnvironment)
+        public AuthenticationService(UserManager<AppUser> userManager, AdressService adressService, SignInManager<AppUser> signInManager, IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _adressService = adressService;
             _signInManager = signInManager;
-            _roleManager = roleManager;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -33,22 +31,15 @@ namespace WebApp.Helpers.Services
             AppUser appUser = model;
             var roleName = "User";
 
-            if(!await _roleManager.Roles.AnyAsync())
-            {
-                await _roleManager.CreateAsync(new IdentityRole("Admin"));
-                await _roleManager.CreateAsync(new IdentityRole("User"));
-            }
-
             if (!await _userManager.Users.AnyAsync())
                 roleName = "Admin";
 
             if(model.ImageFile  == null) 
             {
                 appUser.UploadProfileImage = "standardProfileImg.webp";
-            }
-            if (model.ImageFile != null)
+            }else
             {
-                await UploadImageAsync(appUser, model.ImageFile!);
+                await UploadImageAsync(appUser, model.ImageFile);
             }
 
             var result = await _userManager.CreateAsync(appUser, model.Password);
@@ -73,14 +64,9 @@ namespace WebApp.Helpers.Services
                 string folderPath = $"{_webHostEnvironment.WebRootPath}/images/profileImage/{user.UploadProfileImage!}";
                 await image.CopyToAsync(new FileStream(folderPath, FileMode.Create));
                 return true;
-
             }
             catch  { return false; }
         }
-
-
-
-
 
         public async Task<bool> LoginAsync(LoginVM model)
         {
@@ -88,9 +74,6 @@ namespace WebApp.Helpers.Services
             if (appUpser != null)
             {
                 var result = await _signInManager.PasswordSignInAsync(appUpser, model.Password, model.RememberMe, false);
-
-
-                //var result = await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role, "Admin"));
                 return result.Succeeded;
             }
 

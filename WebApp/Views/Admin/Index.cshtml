@@ -24,7 +24,7 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Role</th>
-				@*<th>Edit</th>*@
+				<th>Delete</th>
 			</tr>
 			@foreach (var user in Model)
 			{
@@ -57,10 +57,49 @@
 							</div>
 						</div>
 					</td>
+					<td>
+						<form id="deleteForm-@user.Id" method="post" action="@Url.Action("RemoveUser", "Admin")">
+							<input type="hidden" name="userId" value="@user.Id" />
+							<button type="button" onclick="openConfirmationDialog('@user.Id')"><i class="fa-regular fa-trash-can"></i></button>
+						</form>
+					</td>
 				</tr>
 			}
 		</table>
+		<div id="confirmationModal" class="_modal">
+			<div class="_modal-content">
+				<h3>Confirmation</h3>
+				<p>Are you sure you want to delete this user?</p>
+				<div class="_button-wrapper">
+					<button id="confirmBtn" class="_modal-button button-theme">Yes</button>
+					<button id="cancelBtn" class="_modal-button button-theme">No</button>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 
 
+
+
+
+<script>
+	var modal = document.getElementById("confirmationModal");
+	var confirmBtn = document.getElementById("confirmBtn");
+	var cancelBtn = document.getElementById("cancelBtn");
+
+	// Function to display the modal and submit the form
+	function openConfirmationDialog(userId) {
+		modal.style.display = "block";
+
+		confirmBtn.onclick = function () {
+			var form = document.getElementById("deleteForm-" + userId);
+			form.submit();
+			modal.style.display = "none";
+		};
+
+		cancelBtn.onclick = function () {
+			modal.style.display = "none";
+		};
+	}
+</script>
