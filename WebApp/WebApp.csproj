@@ -8,12 +8,10 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
-    <Content Remove="Views\Partials\_Showcase.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
-    <None Include="Views\Partials\_Showcase.cshtml" />
     <None Include="wwwroot\css\core\_mixins.scss" />
     <None Include="wwwroot\css\core\_root.scss" />
     <None Include="wwwroot\css\core\_variables.scss" />
@@ -49,14 +47,6 @@
   <ItemGroup>
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\css\sections\Backoffice\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\Partials\_Showcase.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Views\Partials\_Showcase.cshtml" />
   </ItemGroup>
 
 </Project>
